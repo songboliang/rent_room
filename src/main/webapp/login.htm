@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>登录 - APP任务发布平台</title>
+		<link rel="shortcut icon" href="http://www.17sucai.com/preview/66735/2018-04-25/whycupapp/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="login_files/layui.css">
+		<link rel="stylesheet" href="login_files/login.css">
+	<link id="layuicss-laydate" rel="stylesheet" href="login_files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="login_files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="login_files/code.css" media="all"></head>
+
+	<body>
+		<div class="layui-carousel video_mask" id="login_carousel" style="width: 100%; height: 100%;" lay-anim="fade" lay-indicator="none" lay-arrow="none">
+			<div carousel-item="">
+				<div class="carousel_div1"></div>
+				<div class="carousel_div2"></div>
+				<div class="carousel_div3 layui-this"></div>
+			</div>
+			<div class="login layui-anim layui-anim-up">
+				<div class="layui-logo">
+					<a href="#" target="_blank"><img src="login_files/logo.png"></a>
+				</div>
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend class="text-white">APP任务发布平台登录</legend>
+				</fieldset>
+				<div class="layui-form" action="" method="post">
+					<div class="layui-form-item">
+						<input type="text" id="account" lay-verify="required|account" maxlength="20" placeholder="请输入手机号" autocomplete="off" autofocus="autofocus" class="layui-input">
+					</div>
+					<div class="layui-form-item">
+						<input type="password" id="password" lay-verify="required" maxlength="20" placeholder="请输入密码" autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-form-item form_code">
+						<input type="text" id="code" lay-verify="required|code" maxlength="6" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+						<div class="code"><img id="refCode_login_img" width="118" height="38"></div>
+					</div>
+
+					<button class="login_btn layui-btn layui-btn-radius layui-btn-normal" lay-submit="" lay-filter="login">登录</button>
+					<strong class="text-white">还没有账号？ <a href="http://localhost:8080/RentRoom/register.htm" style="color: cornflowerblue;">立即注册»</a></strong>
+				</div>
+				<hr class="layui-bg-gray">
+				<div class="layui-footer text-white">
+					<!-- 底部固定区域 -->
+					©2014-2017 深圳市有限公司版权所有
+				</div>
+			</div>
+		<div class="layui-carousel-ind"><ul><li class=""></li><li class=""></li><li class="layui-this"></li></ul></div><button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow" lay-type="add"></button></div>
+
+		<script type="text/javascript" src="login_files/jquery.js"></script>
+		<script type="text/javascript" src="login_files/layui.js"></script>
+		<script type="text/javascript" src="login_files/login.js"></script>
+	
+
+</body></html>

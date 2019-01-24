@@ -1,0 +1,1018 @@
+.floatingLayer {
+    left: 0
+}
+
+.floatingLayerBtn {
+    left: -100%
+}
+
+.banner #myCarousel {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1920px;
+    min-width: 1035px;
+    margin: 0 auto
+}
+
+.banner .carousel-inner, .banner .item a img {
+    display: block;
+    width: 100%
+}
+
+.banner .carousel-control.left {
+    background: url(../../img/index/b-prev.png) no-repeat 0 0 !important;
+    margin-left: -518px
+}
+
+.banner .carousel-control.left, .banner .carousel-control.right {
+    display: none;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    background-size: 60px;
+    margin-top: -30px;
+    z-index: 1
+}
+
+.banner .carousel-control.right {
+    background: url(../../img/index/b-next.png) no-repeat 0 0 !important;
+    margin-left: 456px
+}
+
+.banner {
+    position: relative
+}
+
+.search {
+    display: block;
+    width: 1024px;
+    margin: 0 auto
+}
+
+div.search-box {
+    float: left;
+    background: #fff;
+    height: 60px;
+    border: 1px solid #ddd
+}
+
+.search-select {
+    float: left;
+    width: 110px;
+    position: relative
+}
+
+.search-select span {
+    display: block;
+    line-height: 60px;
+    font-size: 18px;
+    color: #000;
+    background: url(https://public.danke.com.cn/public-20181127-FjWkTNvQB10on-BDvtGmNBzWgTvw) no-repeat left center;
+    text-indent: 27px;
+    cursor: pointer
+}
+
+.search-select-list {
+    display: none;
+    position: absolute;
+    top: 61px;
+    left: 2px;
+    width: 106px;
+    background: #fff;
+    box-shadow: 0 0 5px 0 #aaa;
+    -webkit-box-shadow: 0 0 5px 0 #aaa;
+    -moz-box-shadow: 0 0 5px 0 #aaa
+}
+
+.search-select-list label {
+    display: block;
+    line-height: 42px;
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+    cursor: pointer
+}
+
+.search-select-list label:hover {
+    background: #e6e6e6
+}
+
+div.search-box input {
+    float: left;
+    display: block;
+    height: 60px;
+    background: 0 0;
+    padding: 15px 20px;
+    line-height: 20px;
+    border: 0;
+    font-size: 18px;
+    color: #000;
+    width: 490px
+}
+
+.index-map-btn, .search-btn {
+    width: 200px;
+    line-height: 58px;
+    color: #fff;
+    font-size: 20px;
+    background: url(https://public.danke.com.cn/public-20181127-FqUZXz4YQkRGTi9pz8gQJiG_zLQp) no-repeat center center;
+    text-indent: 92px;
+    font-weight: 500;
+    cursor: pointer
+}
+
+.index-map-btn {
+    float: right;
+    text-indent: 75px;
+    background: url(https://public.danke.com.cn/public-20181210-FqidX88nLzEoXQgxYah2TY0gRuva) no-repeat center center
+}
+
+.search.fixed .index-map-btn {
+    display: none
+}
+
+.index-map-btn:hover {
+    color: #fff
+}
+
+.search-btn {
+    float: left
+}
+
+.search-map-btn {
+    float: right
+}
+
+.searcht-text {
+    display: block;
+    clear: both;
+    height: 60px;
+    padding-left: 30px;
+    padding-top: 20px
+}
+
+.searcht-text label {
+    color: #999
+}
+
+.searcht-text a {
+    color: #3dbcc6
+}
+
+.searcht-text a, .searcht-text label {
+    float: left;
+    line-height: 20px;
+    font-size: 14px;
+    margin-right: 15px
+}
+
+.search-map-btn:hover {
+    color: #fff
+}
+
+.searcht-text a:hover {
+    text-decoration: underline
+}
+
+.product {
+    display: block;
+    height: 204px;
+    background: #fff
+}
+
+.product .wibsite-center {
+    padding: 37px 15px 30px
+}
+
+.product-list {
+    float: left;
+    width: 90px;
+    margin: 0 38px
+}
+
+.product-list img {
+    display: block;
+    width: 90px;
+    height: 90px
+}
+
+.product span {
+    display: block;
+    padding: 22px 0 0;
+    text-align: center;
+    font-size: 18px;
+    color: #666
+}
+
+.index-box, .index-sq {
+    overflow: hidden;
+    padding: 0 0 28px
+}
+
+.index-box {
+    overflow: initial;
+    height: 145px;
+    background: #fbfbfb;
+    padding: 20px 0 0;
+    border-bottom: 1px solid #f3f3f3
+}
+
+.box-title {
+    display: block;
+    padding: 20px 32px 20px 0;
+    height: 111px;
+    border-bottom: 2px solid #efefef
+}
+
+.box-title-fl span {
+    display: block;
+    font-size: 30px;
+    color: #4d5355;
+    line-height: 50px
+}
+
+.box-title-fl span b {
+    font-weight: 700;
+    color: #000
+}
+
+.box-title-fl p {
+    display: block;
+    line-height: 20px;
+    font-size: 14px;
+    color: #8b8b8b
+}
+
+.box-title-fr a {
+    display: block;
+    font-size: 18px;
+    color: #4d5355;
+    line-height: 35px;
+    margin: 35px 0 0
+}
+
+.box-title-fr a:hover {
+    color: #4d5355;
+    text-decoration: underline
+}
+
+.index-sqbox {
+    overflow: hidden;
+    margin-top: 20px;
+    min-height: 240px
+}
+
+.index-sqbox a {
+    float: left;
+    position: relative;
+    width: 388px;
+    height: 257px;
+    margin-top: 20px;
+    overflow: hidden
+}
+
+.index-sqbox a img {
+    display: block;
+    width: 388px;
+    height: 257px
+}
+
+.sqlist-bg {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: #000;
+    opacity: .7;
+    z-index: 1
+}
+
+.sqlist-text {
+    position: absolute;
+    width: 332px;
+    bottom: 0;
+    z-index: 2
+}
+
+.sqlist-text label, .sqlist-text span {
+    float: left;
+    color: #fff;
+    line-height: 40px;
+    padding-left: 15px
+}
+
+.sqlist-text label {
+    font-size: 28px
+}
+
+.sqlist-text span {
+    padding: 15px 0 0 15px;
+    line-height: 25px;
+    font-size: 14px
+}
+
+.box-title-fr label {
+    position: relative;
+    float: left;
+    margin-top: 40px;
+    margin-left: 30px;
+    width: 80px;
+    line-height: 26px;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #3dbcc6;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+    border-radius: 13px;
+    cursor: pointer
+}
+
+.box-title-fr label.on {
+    background: #3dbcc6;
+    color: #fff
+}
+
+.box-title-fr label.on i {
+    display: block;
+    position: absolute;
+    width: 17px;
+    top: 40px;
+    left: 31px;
+    height: 11px;
+    background: #fff url(//public.danke.com.cn/public-20171228-Fk8DVosartd1AOqFlsl_4zstD81X) no-repeat center center
+}
+
+.sample-box {
+    height: 561px;
+    margin-top: 30px
+}
+
+.sample-box .item {
+    background: url(//public.danke.com.cn/public-20180327-FuTnb72OEzUItTSN6t0db_orMIrf) no-repeat center center
+}
+
+.sample-box .item.active, .sample-box .item.left {
+    display: block !important
+}
+
+.sample-box img {
+    width: 100%;
+    height: 100% !important;
+    cursor: pointer;
+    display: none
+}
+
+.sample-box .sample {
+    display: none
+}
+
+.sample-box .sample.block {
+    display: block
+}
+
+.sample-slide {
+    position: relative;
+    float: left;
+    width: 857px;
+    height: 640px
+}
+
+.sample-name {
+    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 66px;
+    padding: 0 145px 0 15px;
+    font-size: 20px;
+    line-height: 66px;
+    background: rgba(0, 0, 0, .6);
+    color: #fff;
+    overflow: hidden
+}
+
+@media \0screen\,screen\9 {
+    .sample-name {
+        background: #000
+    }
+}
+
+.sample-name .inList {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    height: 30px;
+    padding: 0 15px;
+    margin-top: -15px;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 100px;
+    color: #fff;
+    background: #3dbcc6
+}
+
+.sample-btn {
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: -63px;
+    cursor: pointer;
+    opacity: .5
+}
+
+.sample-btn.none {
+    display: none
+}
+
+.sample-btn:hover {
+    opacity: 1
+}
+
+.sample-prev {
+    left: 45px;
+    background: url(../../img/index/b-prev.png) no-repeat
+}
+
+.sample-next {
+    right: 45px;
+    background: url(../../img/index/b-next.png) no-repeat
+}
+
+.sample-si {
+    width: 318px;
+    height: 640px;
+    margin-left: 862px
+}
+
+.sample-si .si {
+    position: relative;
+    height: 210px;
+    margin-top: 5px;
+    background: url(//public.danke.com.cn/public-20180327-FuTnb72OEzUItTSN6t0db_orMIrf) no-repeat center center;
+    overflow: hidden
+}
+
+.sample-si .si.no-bg {
+    background: 0 0
+}
+
+.sample-si .g1, .sample-si .m1 {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.sample-si .si:first-child {
+    margin-top: 0
+}
+
+.sample-list {
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+.sample-list li {
+    width: 857px;
+    height: 640px
+}
+
+.storybox {
+    height: 585px
+}
+
+.storylist {
+    background: #f8f8f8;
+    margin-top: 18px;
+    position: relative;
+    border: 1px solid #fff
+}
+
+.s-l1 {
+    float: left;
+    width: 388px;
+    height: 614px
+}
+
+.s-l2, .s-l3 {
+    float: right;
+    width: 792px;
+    height: 296px
+}
+
+.s-l1 img {
+    display: block;
+    width: 386px;
+    height: 315px
+}
+
+.s-l2 img, .s-l3 img {
+    float: left;
+    display: block;
+    height: 294px;
+    width: 499px
+}
+
+.s-l1 .sl-text {
+    display: block
+}
+
+.storylist label {
+    position: absolute;
+    width: 72px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px
+}
+
+.s-l1 label {
+    top: 243px;
+    left: 244px
+}
+
+.s-l2 label, .s-l3 label {
+    left: 380px;
+    top: 244px
+}
+
+.sl-text span {
+    display: block;
+    line-height: 35px;
+    padding: 20px 0 0;
+    font-size: 24px;
+    color: #000
+}
+
+.sl-text p {
+    display: block;
+    line-height: 25px;
+    color: #000;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.s-l1 p {
+    height: 175px
+}
+
+.sl-text b {
+    display: block;
+    height: 1px;
+    width: 95px;
+    margin: 10px 0 20px;
+    background: #68dadd
+}
+
+.sl-text {
+    padding: 0 24px
+}
+
+.s-l2 .sl-text, .s-l3 .sl-text {
+    margin: 0 0 0 499px
+}
+
+.s-l2 .sl-text p, .s-l3 .sl-text p {
+    height: 150px
+}
+
+#picture-modal #myCarousel {
+    position: relative;
+    width: 770px;
+    height: 578px
+}
+
+#picture-modal .carousel-control.left {
+    background: url(../../img/index/b-prev.png) no-repeat 0 0 !important;
+    left: 20px
+}
+
+#picture-modal .carousel-control.left, #picture-modal .carousel-control.right {
+    top: 270px;
+    width: 60px;
+    height: 60px;
+    background-size: 60px;
+    margin-top: -40px;
+    z-index: 1
+}
+
+#picture-modal .carousel-control.right {
+    background: url(../../img/index/b-next.png) no-repeat 0 0 !important;
+    right: 20px
+}
+
+.modal-content, .modal-dialog {
+    width: 800px
+}
+
+.modal-header {
+    border: 0
+}
+
+.carousel-indicators .active, .carousel-indicators li {
+    margin: 0 5px
+}
+
+.modal-header {
+    margin-top: 15px;
+    background: url(//public.danke.com.cn/public-20171229-FsIMFxqiC3aXPaPT5aOu4MgAjdwe) no-repeat center center
+}
+
+.modal-title {
+    line-height: 35px;
+    padding: 0;
+    font-size: 25px;
+    margin: 10px;
+    background: #fff
+}
+
+#picture-modal .carousel {
+    margin-top: 20px
+}
+
+#picture-modal .carousel-inner img {
+    width: 100%;
+    height: 573px
+}
+
+#picture-modal .place {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    height: 80px;
+    font-size: 0;
+    background: rgba(0, 0, 0, .5)
+}
+
+#picture-modal .place label {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    margin: 25px 0 0 20px;
+    font-size: 14px;
+    line-height: 29px;
+    border: 1px solid #fff;
+    border-radius: 80px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer
+}
+
+#picture-modal .place label.on {
+    background: #3dbcc6
+}
+
+#picture-modal .place a {
+    float: right;
+    padding: 0 15px;
+    height: 30px;
+    margin: 25px 20px 0 0;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 80px;
+    color: #fff;
+    background: #3dbcc6
+}
+
+.modal-header .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px
+}
+
+.list-unstyled li {
+    font-size: 16px;
+    line-height: 25px
+}
+
+.col-md-3 {
+    width: 170px;
+    float: left
+}
+
+.col-md-9 {
+    float: left;
+    width: 620px;
+    height: 50px;
+    overflow: hidden;
+    padding-left: 20px;
+    border-left: 1px solid #979797
+}
+
+.col-md-9 p {
+    font-size: 16px;
+    line-height: 25px
+}
+
+.index-product-box {
+    display: block;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    clear: both;
+    border-bottom: 1px solid #aaa
+}
+
+.index-product-box .close-ad {
+    z-index: 2;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff url(//public.danke.com.cn/public-20180205-FmSuZn83XDqV1AfZjIwvSrtSCOHe) no-repeat center;
+    cursor: pointer;
+    background-size: 12px 12px;
+    opacity: .4
+}
+
+.index-product-box:hover .close-ad {
+    opacity: .8
+}
+
+.index-product-box a {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -960px;
+    top: 0
+}
+
+.index-product-box a img {
+    display: block;
+    width: 1920px;
+    height: 80px
+}
+
+#loadingDiv {
+    display: none
+}
+
+.pull-right {
+    float: none !important
+}
+
+.carousel-indicators {
+    width: 80%;
+    margin-left: -40%
+}
+
+.search.fixed {
+    position: fixed;
+    z-index: 10;
+    top: 11px;
+    width: 830px;
+    height: 52px;
+    background: #fff;
+    left: 50%;
+    margin-left: -450px
+}
+
+.search.fixed div.search-box input {
+    width: 518px
+}
+
+.search.fixed .searcht-text {
+    display: none
+}
+
+.search.fixed input.search-box {
+    height: 48px
+}
+
+.search.fixed div.search-box {
+    background: #f6f7f7;
+    height: 48px;
+    border: 1px solid #fff
+}
+
+.search.fixed .search-select span {
+    line-height: 48px
+}
+
+.search.fixed .search-select-list {
+    top: 52px
+}
+
+.search.fixed .search-btn {
+    line-height: 46px
+}
+
+.index-dkchn {
+    display: block;
+    background: #fbfbfb;
+    padding-bottom: 120px
+}
+
+.index-center {
+    width: 1200px;
+    margin: 0 auto
+}
+
+.dnchn-title {
+    display: block;
+    line-height: 128px;
+    font-size: 30px;
+    color: #333
+}
+
+.dkchn-box {
+    display: block;
+    overflow: hidden
+}
+
+.dkchn-list {
+    float: left;
+    width: 300px;
+    height: 340px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer
+}
+
+.dkchn-list-hover {
+    position: relative;
+    transition: .6s;
+    transform-style: preserve-3d
+}
+
+.back, .front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden
+}
+
+.front {
+    overflow: hidden;
+    z-index: 2;
+    background: #fff;
+    background-size: 1px 80px;
+    backface-visibility: hidden
+}
+
+.back {
+    background: #3dbcc6;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+    z-index: 3
+}
+
+.dkchn-list:hover .dkchn-list-hover {
+    transform: rotateY(180deg)
+}
+
+.dkchn-list {
+    perspective: 1000;
+    transform-style: preserve-3d
+}
+
+.back, .dkchn-list-hover, .front {
+    width: 280px;
+    height: 340px
+}
+
+.front p {
+    display: block;
+    font-size: 18px;
+    color: #333;
+    padding: 240px 0 0;
+    line-height: 100px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center 38px;
+    font-weight: 600
+}
+
+.dnchn-list-bg01 {
+    background-image: url(https://public.danke.com.cn/public-20181127-FpGxwXXcUGXJjCSelglfPaKCI1td)
+}
+
+.dnchn-list-bg02 {
+    background-image: url(https://public.danke.com.cn/public-20181127-Fg8kZ9R1x9u4zupiISgD6qWfozUl)
+}
+
+.dnchn-list-bg03 {
+    background-image: url(https://public.danke.com.cn/public-20181127-FhdXHq_mkYO3KDh5fsmQdN3_ol1q)
+}
+
+.dnchn-list-bg04 {
+    background-image: url(https://public.danke.com.cn/public-20181127-FooUwFKk6-P97lQdrLP1mj0L8_f1)
+}
+
+.back p {
+    display: block;
+    padding: 125px 0 0;
+    line-height: 45px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center
+}
+
+.danke_header.scroll .nav {
+    display: none
+}
+
+.danke_header.scroll .dklogin.fr, .danke_header.scroll .dklogined-wrapper {
+    display: none
+}
+
+.danke_header.scroll .serphoen {
+    margin-top: 5px
+}
+
+.danke_header.scroll .logo {
+    margin-top: 18px
+}
+
+.index-rooms-box {
+    overflow: hidden;
+    padding: 0 0 28px
+}
+
+.index-rooms {
+    display: block
+}
+
+.index-rooms a {
+    float: left;
+    width: 388px;
+    height: 360px;
+    background: #fff;
+    margin-top: 20px;
+    border: 1px solid #fff
+}
+
+.index-rooms a:nth-child(2), .index-rooms a:nth-child(5), .index-sqbox a:nth-child(2), .index-sqbox a:nth-child(5), .sample-list:nth-child(2), .sample-list:nth-child(5) {
+    margin-left: 18px;
+    margin-right: 18px
+}
+
+.index-rooms a img {
+    display: block;
+    width: 386px;
+    height: 259px
+}
+
+.index-rooms a span {
+    padding: 5px 0 0;
+    color: #a7a7a7;
+    font-size: 14px;
+    line-height: 50px;
+    height: 50px
+}
+
+.index-rooms a span b {
+    font-weight: 700;
+    font-size: 24px;
+    color: #ff7966
+}
+
+.index-rooms a label, .index-rooms a p, .index-rooms a span {
+    display: block;
+    margin: 0 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.index-rooms a label, .index-rooms a p {
+    height: 22px;
+    line-height: 22px
+}
+
+.index-rooms a p {
+    font-size: 14px;
+    color: #000
+}
+
+.index-rooms a label {
+    color: #a7a7a7;
+    font-size: 12px
+}
+
+.search.fixed.newborder div.search-box {
+    border: 1px solid #3dbcc5;
+    background: #fff
+}
+
+.search.newborder div.search-box {
+    border: 1px solid #3dbcc5;
+    background: #fff
+}

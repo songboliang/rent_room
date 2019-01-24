@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>注册 - APP任务发布平台</title>
+		<link rel="shortcut icon" href="http://www.17sucai.com/preview/66735/2018-04-25/whycupapp/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="login_files/layui.css">
+		<link rel="stylesheet" href="login_files/register.css">
+	<link id="layuicss-laydate" rel="stylesheet" href="login_files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="login_files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="login_files/code.css" media="all"></head>
+
+	<body style="background-image: url(img/login-bg2.jpg);">
+		<div class="layui-main user">
+			<div class="layui-clear main">
+				<div class="layui-logo">
+					<a href="#" target="_blank"><img src="login_files/logo.png"></a>
+				</div>
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend class="text-white">乐享租房平台注册</legend>
+				</fieldset>
+				<div class="layui-form layui-form-pane">
+					<div class="layui-form">
+						<div class="layui-form-item">
+							<input class="layui-input" id="phone" placeholder="请输入手机号" type="text" maxlength="11" lay-verify="required|phone|regexit" autofocus="autofocus" autocomplete="off">
+						</div>
+						<div class="layui-form-item">
+							<input class="layui-input" id="username" placeholder="请输入用户名" type="text" maxlength="11"  autofocus="autofocus" autocomplete="off">
+						</div>
+						<div class="layui-form-item">
+							<input class="layui-input" id="password" placeholder="请输入密码" type="password" maxlength="20" lay-verify="required|pwd" autocomplete="off">
+						</div>
+						<div class="layui-form-item">
+							<input class="layui-input" placeholder="请再次输入密码" type="password" maxlength="20" lay-verify="required|rePwd" autocomplete="off">
+						</div>
+						<div class="layui-form-item form_code">
+							<input id="code" class="layui-input" placeholder="请输入图片验证码" type="text" maxlength="6" lay-verify="required|code">
+							<div class="code"><img id="refCode_reg_img" width="120" height="38"></div>
+						</div>
+						<div class="layui-form-item form_code">
+							<input id="msg-code" class="layui-input" placeholder="请输入短信验证码" type="text" maxlength="6" lay-verify="required|number|msgcode">
+							<div class="code">
+								<a id="msg-btn" class="layui-btn layui-btn-normal tel-btn" style="width: 120px;">获取验证码</a>
+							</div>
+						</div>
+						<div class="layui-form-item" style="float: left;margin-left: -10px;">
+							<input lay-filter="agreen-checkbox" title="我同意" type="checkbox" lay-skin="primary" checked="checked"><div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary"><span>我同意</span><i class="layui-icon"></i></div>
+							<a href="#" target="_blank">《注册协议》</a>
+						</div>
+						<div class="layui-form-item">
+							<button id="reg" type="submit" class="login_btn layui-btn layui-btn-radius layui-btn-normal" lay-submit="" lay-filter="register">立即注册</button>
+						</div>
+						<div>
+							<small class="text-white">已经有账户了？</small>
+							<a href="http://localhost:8080/RentRoom/login.htm">点此登录</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+	<script type="text/javascript" src="login_files/jquery.js"></script>
+	<script type="text/javascript" src="login_files/layui.js"></script>
+	<script type="text/javascript" src="login_files/register.js"></script>
+
+</body></html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.rentroom.dao.RoomMapper">
+
+
+    <insert id="insertRoomInfo" parameterType="Room">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into room(id,name,addressDesc,price,area,status,phone)
+        values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{addressDesc,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE},#{area,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR})
+    </insert>
+
+
+
+
+
+</mapper>

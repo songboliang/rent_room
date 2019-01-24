@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.rentroom.dao.UserMapper">
+
+    <select id="selectUser" resultType="User" parameterType="long">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <insert id="saveUser" parameterType="com.rentroom.pojo.User">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into user(id,phone,password,username,role,status,regTime)
+        values (#{id,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{regTime,jdbcType=DATE})
+    </insert>
+
+    <select id="getUserByPhone" parameterType="String" resultType="User">
+      SELECT * FROM user WHERE phone = #{phone} limit 1;
+    </select>
+
+    <select id="getUserByPhoneAndPassword"  resultType="User">
+      SELECT * FROM user where phone = #{phone} AND password = #{password} AND status = '1' limit 1;
+    </select>
+
+</mapper>
