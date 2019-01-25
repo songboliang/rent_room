@@ -71,34 +71,15 @@
   <div class="width1190">
    <h2 class="title">租房 <a href="pro_zu.jsp">更多&gt;&gt;</a></h2>
    <div class="index-fang-list">
-    <dl>
-     <dt><a href="proinfo.jsp"><img src="images/fang1.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.jsp"></a>虹桥乐亭</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.jsp"><img src="images/fang2.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.jsp"></a>静安豪景</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.jsp"><img src="images/fang3.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.jsp"></a>中凯城市之光(静安)</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.jsp"><img src="images/fang4.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.jsp"></a>水塘小区</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
+    <c:forEach  items="${sessionScope.roomInfos}"  var="proinfo" varStatus="id">
+        <dl>
+            <dt><a href="proinfo.jsp"><img src="images/fang1.jpg" width="286" height="188" /></a></dt>
+            <dd>
+                <h3><a href="proinfo.jsp"></a>${proinfo.name}</h3>
+                <div class="hui">${proinfo.price}￥ | ${proinfo.area} | 精装修</div>
+            </dd>
+        </dl>
+    </c:forEach>
     <div class="clears"></div>
    </div><!--index-fang-list/-->
    

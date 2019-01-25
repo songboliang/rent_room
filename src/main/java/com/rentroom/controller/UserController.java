@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rentroom.pojo.Room;
 import com.rentroom.pojo.User;
+import com.rentroom.service.IRoomService;
 import com.rentroom.service.IUserService;
 import com.rentroom.utils.GetSMS;
 import com.rentroom.utils.RentConst;
@@ -16,6 +18,7 @@ import com.rentroom.utils.vo.ResultVO;
 import com.rentroom.utils.vo.ResultVOUtil;
 import com.rentroom.utils.vo.SendCodeVO;
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,9 +27,11 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -35,6 +40,9 @@ public class UserController {
 
     @Resource
     private IUserService userService;
+
+    @Autowired
+    private IRoomService roomService;
 
     @RequestMapping("/showUser.do")
     public void selectUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -190,6 +198,7 @@ public class UserController {
         String password = request.getParameter("password");
 
         User user = userService.getUserByPhoneAndPassword(phone,password);
+        List<Room> roomInfos = roomService.getRoomInfos();
 
         SendCodeVO sendCodeVO = new SendCodeVO();
 
@@ -200,7 +209,7 @@ public class UserController {
             sendCodeVO.setMsg("您的用户未注册，请先注册！");
         }else{
             request.getSession().setAttribute("userInfo",user);
-
+            request.getSession().setAttribute("roomInfos",roomInfos);
             sendCodeVO.setStatus(RentConst.VaildCode.success);
 
             sendCodeVO.setMsg("您的用户未注册，请先注册！");
@@ -209,6 +218,31 @@ public class UserController {
         return sendCodeVO;
 
 
+    }
+
+
+    /**
+     *
+     * 用户退出  清除session中用户信息
+     * @param request
+     * @param response
+     */
+
+    @ResponseBody
+    @RequestMapping("/exit.do")
+    public void exit(HttpServletRequest request, HttpServletResponse response){
+        HttpSession session=this.getSession(request);
+        User user=(User)session.getAttribute("userInfo");
+        if(user != null){
+            session.removeAttribute("userInfo");
+        }
+
+    }
+
+
+    //获取session
+    private HttpSession getSession(HttpServletRequest request){
+        return  request.getSession();
     }
 
 

@@ -1,16 +1,18 @@
 package com.rentroom.pojo;
 
 
+import java.util.Date;
 
 public class Room {
 
     private int id;
-    private String name;
+    private String name;    //门牌号
     private String addressDesc;
     private String status;
     private double price;
     private String area;
     private String phone;
+    private Date createDate;
 
 
     public int getId() {
@@ -69,4 +71,11 @@ public class Room {
         this.phone = phone;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 }

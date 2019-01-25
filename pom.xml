@@ -158,6 +158,12 @@
       <classifier>jdk15</classifier>
     </dependency>
 
+    <!-- pagehelper分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.1.4</version>
+    </dependency>
   </dependencies>
 
   <build>
