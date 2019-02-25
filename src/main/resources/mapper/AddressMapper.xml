@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentroom.dao.AddressMapper">
+
+    <resultMap type="com.rentroom.pojo.Address" id="Address">
+        <id column="address_Id" property="addId"/>
+        <result property="addressName" column="address_name"/>
+    </resultMap>
+
+    <insert id="insertAddressInfo">
+      insert into address(address_Id,address_name)
+      values (#{addId,jdbcType=VARCHAR},#{addressName,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="getAddressInfos" resultMap="Address">
+      select * from address
+    </select>
+
+</mapper>

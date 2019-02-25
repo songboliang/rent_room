@@ -15,6 +15,7 @@
     <script type="text/javascript" src="../js/libs/modernizr.min.js"></script>
     <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../login_files/layui.js"></script>
     <script src="../js/imgUp.js"></script>
    <style>
    
@@ -28,59 +29,56 @@
 
    </style>
 <script type="text/javascript">
-        var list = [
-            {'title':'11111'},
-            {'title':'22222'},
-            {'title':'33333'},
-            {'title':'44444'}];
     $().ready(function() {
         // 在键盘按下并释放及提交后验证提交表单
         $("#myform").validate({
-        	
+
             rules : {
-            	houseid : {
+                name : {
                     required : true,
                 },
-               
-                address : {
+
+                addressDesc : {
                     required : true,
-                  
+
                 },
                 area : {
                     required : true,
                     min: 0
-                  
+
                 },
                 price: {
                     required : true,
                     min: 0
-                  
+
                 }
-                
+
             },
             messages : {
-            	houseid : {
-                    required : "房屋id不能为空！",
+                name : {
+                    required : "房屋门牌号不能为空！",
                 },
-               
-                address : {
-                    required : "地址不能为空！",
-                  
+
+                addressDesc : {
+                    required : "地址详细信息不能为空！",
+
                 },
                 area : {
                     required : "面积不能为空！",
                     min:"请输入正确的面积"
-                  
+
                 },
                 price: {
                     required :  "价格不能为空！",
                     min:"请输入正确的租金"
-                  
+
                 }
-                
+
             }
         });
     })
+
+
 </script>
 	
 </head>
@@ -91,7 +89,7 @@
 </div>
 <div class="result-content">
 <div class="sidebar-title">
-        <form action="../room/addhouse.do"  id="myform" name="myform" enctype="multipart/form-data" >
+        <form action="" method="post" id="myform" name="myform" enctype="multipart/form-data" >
                     <table class="insert-tab" width="100%">
                         <tbody>
                                 <th><i class="require-red">*</i>门牌号：</th>
@@ -118,17 +116,18 @@
                                 <tr>
                                     <th><i class="require-red">*</i>设施：</th>
                                     <td>
-                                        <c:forEach  items="${sessionScope.furnitures}"  var="furniture" varStatus="id">
-                                            <p><input class="common-text" name="title" value="item.title" id="title" size="10" type="checkbox">${furniture.furniturename}</p>
+                                        <c:forEach items="${sessionScope.furnitureInfos}"  var="proinfo" varStatus="id">
+                                            <input class="common-text" name="check" checked="checked" value="${proinfo.furnitureId}" id="check" size="10" type="checkbox" >${proinfo.furniturename}
                                         </c:forEach>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th><i class="require-red">*</i>房源区域：</th>
                                     <td>
-                                        <select name="Address.addressName" id="addressName" class="required">
-                                            <option value="租房" <c:if test="${address.addressName == '租房'}">selected</c:if>>租房</option>
-                                            <option value="租房" <c:if test="${address.addressName == '租房'}">selected</c:if>>租房</option>
+                                        <select name="addressName" id="addressName" class="required">
+                                            <c:forEach items="${sessionScope.addressInfos}" var="address" varStatus="id">
+                                                <option value="${address.addId}" <c:if test="${address.addressName == address.addressName}">selected</c:if>>${address.addressName}</option>
+                                            </c:forEach>
                                         </select>
                                     </td>
                                 </tr>
@@ -159,7 +158,7 @@
                                         <div class="z_photo upimg-div clear" >
                                         <section class="z_file fl">
                                             <img src="../img/a11.png" class="add-img">
-                                            <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
+                                            <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple="multiple" />
                                         </section>
                                         </div>
                                     </td>
@@ -176,7 +175,8 @@
 								<tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" lay-submit="" lay-filter="login" id="login" type="submit"></input>
+
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>

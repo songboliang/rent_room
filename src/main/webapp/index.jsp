@@ -71,7 +71,8 @@
   <div class="width1190">
    <h2 class="title">租房 <a href="pro_zu.jsp">更多&gt;&gt;</a></h2>
    <div class="index-fang-list">
-    <c:forEach  items="${sessionScope.roomInfos}"  var="proinfo" varStatus="id">
+    <c:forEach  items="${sessionScope.roomInfos}"  var="proinfo" varStatus="status">
+        <c:if test="${status.index<4}">
         <dl>
             <dt><a href="proinfo.jsp"><img src="images/fang1.jpg" width="286" height="188" /></a></dt>
             <dd>
@@ -79,6 +80,7 @@
                 <div class="hui">${proinfo.price}￥ | ${proinfo.area} | 精装修</div>
             </dd>
         </dl>
+        </c:if>
     </c:forEach>
     <div class="clears"></div>
    </div><!--index-fang-list/-->

@@ -5,18 +5,62 @@
 <mapper namespace="com.rentroom.dao.RoomMapper">
 
 
+    <resultMap type="com.rentroom.pojo.Room" id="roomResult1">
+        <id column="room_id" property="roomId"/>
+        <result column="name" property="name"/>
+        <result column="sellType" property="sellType"/>
+        <result column="houseType" property="houseType"/>
+        <result column="addressDesc" property="addressDesc"/>
+        <result column="status" property="status"/>
+        <result column="price" property="price"/>
+        <result column="area" property="area"/>
+        <result column="phone" property="phone"/>
+        <result column="createDate" property="createDate"/>
+        <association property="address" resultMap="Address"/>
+        <collection property="furnitureList" ofType="com.rentroom.pojo.Furniture">
+            <id column="furniture_id" property="furnitureId"/>
+            <result property="furniturename" column="furniture_name"/>
+        </collection>
+    </resultMap>
+
+    <resultMap type="com.rentroom.pojo.Address" id="Address">
+        <id column="address_Id" property="addId"/>
+        <result property="addressName" column="address_name"/>
+    </resultMap>
+
+
+
+
     <insert id="insertRoomInfo" parameterType="Room">
-        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
-            SELECT LAST_INSERT_ID() AS id
-        </selectKey>
-        insert into room(id,name,addressDesc,price,area,status,phone,createDate)
-        values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{addressDesc,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE},#{area,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{createDate,jdbcType=DATE})
+        insert into room(room_id,name,sellType,houseType,addressDesc,price,area,status,phone,createDate,address_Id)
+        values (#{roomId,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{sellType,jdbcType=VARCHAR},#{houseType,jdbcType=VARCHAR},#{addressDesc,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE},#{area,jdbcType=INTEGER},#{status,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{createDate,jdbcType=DATE},#{address.addId,jdbcType=VARCHAR})
+
     </insert>
 
-    <select id="getRoomInfos" resultType="room">
-      SELECT * FROM room WHERE status = '未出租';
+    <select id="getRoomInfos" resultMap="roomResult1">
+          select r.room_id,r.name,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+	      from room r
+	      left join room_furniture rf on r.room_id=rf.room_id
+	      left join furniture f on f.furniture_id=rf.furniture_id
+	      LEFT JOIN address a on a.address_id = r.address_Id
+          WHERE status = '未出租';
     </select>
 
+    <select id="getRoomInfo" resultMap="roomResult1">
+          select r.room_id,r.name,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+	      from room r
+	      left join room_furniture rf on r.room_id=rf.room_id
+	      left join furniture f on f.furniture_id=rf.furniture_id
+	      LEFT JOIN address a on a.address_id = r.address_Id
+          where r.room_id = #{roomId}
+    </select>
 
+    <insert id="saveRoomOrFurnitre" parameterType="map">
+        insert into room_furniture(room_id,furniture_id)
+        values
+        <foreach collection="furnitures" item="furniture" separator=",">
+            (#{roomId},#{furniture.furnitureId})
+        </foreach>
+    </insert>
 
 </mapper>

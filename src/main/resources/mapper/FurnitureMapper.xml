@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentroom.dao.FurnitureMapper">
+
+
+    <resultMap type="com.rentroom.pojo.Furniture" id="Furniture">
+        <id column="furniture_id" property="furnitureId"/>
+        <result property="furniturename" column="furniture_name"/>
+    </resultMap>
+
+    <insert id="insertFurnitureInfo" parameterType="Furniture">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="furnitureId">
+            SELECT LAST_INSERT_ID() AS furnitureId
+        </selectKey>
+        insert into furniture(furniture_id,furniture_name)
+        values (#{furnitureId,jdbcType=INTEGER},#{furniturename,jdbcType=VARCHAR})
+    </insert>
+
+
+    <select id="getFurnitureInfos" resultMap="Furniture">
+      select * from furniture;
+    </select>
+
+</mapper>

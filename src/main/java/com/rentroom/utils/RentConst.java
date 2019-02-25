@@ -75,4 +75,26 @@ public class RentConst {
 
     }
 
+    public interface SellType{
+
+        String rent="租房";
+
+        String bridal_chamber= "新房";
+
+        String second_hand_house = "二手房";
+
+    }
+
+    public interface HouseType{
+
+        String one_hall = "一室一厅";
+
+        String two_hall="两室一厅";
+
+        String three_hall="三室一厅";
+
+        String one_hall_one_toliet="一室一厅一卫";
+
+    }
+
 }

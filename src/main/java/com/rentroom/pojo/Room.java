@@ -2,25 +2,33 @@ package com.rentroom.pojo;
 
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class Room {
 
-    private int id;
+    private String roomId;
     private String name;    //门牌号
+    private String sellType;   //房源出售方式
+    private String houseType;       //房屋类型
     private String addressDesc;
     private String status;
     private double price;
-    private String area;
+    private int area;
     private String phone;
     private Date createDate;
+    private List<Furniture> furnitureList;
+    private Address address; //房源区域
 
 
-    public int getId() {
-        return id;
+
+
+    public String getRoomId() {
+        return roomId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 
     public String getName() {
@@ -55,14 +63,6 @@ public class Room {
         this.price = price;
     }
 
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -77,5 +77,45 @@ public class Room {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public List<Furniture> getFurnitureList() {
+        return furnitureList;
+    }
+
+    public void setFurnitureList(List<Furniture> furnitureList) {
+        this.furnitureList = furnitureList;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String getHouseType() {
+        return houseType;
+    }
+
+    public void setHouseType(String houseType) {
+        this.houseType = houseType;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+    public String getSellType() {
+        return sellType;
+    }
+
+    public void setSellType(String sellType) {
+        this.sellType = sellType;
     }
 }

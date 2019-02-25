@@ -1,6 +1,7 @@
 package com.rentroom.utils;
 
 import java.util.Random;
+import java.util.UUID;
 
 public class RandUtil {
 
@@ -13,6 +14,12 @@ public class RandUtil {
         }
         System.out.println("6位随机数：" + randomNum);
         return randomNum;
+    }
+
+
+    public static String getUUID(){
+        String uuidStr=UUID.randomUUID().toString().replace("-", "").toLowerCase();
+        return uuidStr;
     }
 
 

@@ -1,6 +1,8 @@
 package com.rentroom.dao;
 
+import com.rentroom.pojo.Furniture;
 import com.rentroom.pojo.Room;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +17,9 @@ public interface RoomMapper {
     //批量查询
     List<Room>  getRoomInfos();
 
+    void saveRoomOrFurnitre(@Param(value = "roomId")String roomId,@Param(value = "furnitures") List<Furniture> furnitures);
+
+    //通过Id查询房屋信息
+
+    Room getRoomInfo(String roomId);
 }

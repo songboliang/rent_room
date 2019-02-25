@@ -11,6 +11,7 @@ import com.rentroom.pojo.User;
 import com.rentroom.service.IRoomService;
 import com.rentroom.service.IUserService;
 import com.rentroom.utils.GetSMS;
+import com.rentroom.utils.RandUtil;
 import com.rentroom.utils.RentConst;
 import com.rentroom.utils.VerifyCode;
 import com.rentroom.utils.vo.CanvasVO;
@@ -244,7 +245,6 @@ public class UserController {
     private HttpSession getSession(HttpServletRequest request){
         return  request.getSession();
     }
-
 
 
 }
