@@ -17,4 +17,12 @@ public interface IRoomService {
 
     //通过Id查询房屋信息
     Room getRoomInfo(String roomId);
+
+    /**
+     * 通过售卖方式查询房屋信息
+     * @param sellType
+     * @return
+     */
+    List<Room> getRoomInfosBysellType(String sellType);
+
 }

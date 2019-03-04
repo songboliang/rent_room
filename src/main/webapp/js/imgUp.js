@@ -1,8 +1,6 @@
 $(function(){
 	var layer = layui.layer,
 		form = layui.form;
-    var fileList;
-	var vals = [];
     var arrFiles = [];//替换的文件数组
 	var delParent;
 	var defaults = {
@@ -15,22 +13,23 @@ $(function(){
 		/*点击图片的文本框*/
 	$(".file").change(function(){	 
 		var idFile = $(this).attr("id");
+		console.log(idFile);
 		var file = document.getElementById(idFile);
 		var imgContainer = $(this).parents(".z_photo"); //存放图片的父亲元素
-		fileList = file.files; //获取的图片文件
+		var fileList = file.files; //获取的图片文件
 		var input = $(this).parent();//文本框的父亲元素
 		var imgArr = [];
 		//遍历得到的图片文件
 		var numUp = imgContainer.find(".up-section").length;
+		console.log("==="+numUp);
 		var totalNum = numUp + fileList.length;  //总的数量
 		console.log(totalNum);//打印上传图片数量
-        console.log(fileList)
 		if(fileList.length > 5 || totalNum > 5 ){
 			alert("上传图片数目不可以超过5个，请重新选择");  //一次选择上传超过5个 或者是已经上传和这次上传的到的总数也不可以超过5个
 		}
 		else if(numUp < 5){
 			fileList = validateUp(fileList);
-			console.log(fileList)
+			console.log(fileList);
 			for(var i = 0;i<fileList.length;i++){
 			 var imgUrl = window.URL.createObjectURL(fileList[i]);
 			     imgArr.push(imgUrl);
@@ -115,37 +114,41 @@ $(function(){
 			return arrFiles;
 		}
 
+
 	//监听提交
 	form.on("submit(login)", function() {
+		var formData = new FormData();
+		for (var i = 0, len = arrFiles.length; i < len; i++) {
+			//console.log(fileList[i]);
+			formData.append('fileList[]', arrFiles[i]);
+		}
 		var checkID=[];
 		$("input[name='check']:checked").each(function(i){
 			checkID[i] =$(this).val();
 		});
 		var strify = JSON.stringify(checkID);
-		console.log(checkID);
-		console.log(strify);
+		formData.append("name",$("#name").val());
+		formData.append("addressDesc",$("#addressDesc").val());
+		formData.append("phone",$("#phone").val());
+		formData.append("price",$("#price").val());
+		formData.append("sellType",$("#sellType").val());
+		formData.append("houseType",$("#houseType").val());
+		formData.append("status",$("#status").val());
+		formData.append("area",$("#area").val());
+		formData.append("addID",$("#addressName").val());
+		formData.append("checkID",strify);
+
 		$.ajax({
 			url: "../room/addhouse.do",
 			type: "post",
-			data: {
-				"name": $("#name").val(),
-				"addressDesc": $("#addressDesc").val(),
-				"phone":$("#phone").val(),
-				"price":$("#price").val(),
-				"sellType":$("#sellType").val(),
-				"houseType":$("#houseType").val(),
-				"status":$("#status").val(),
-				"area":$("#area").val(),
-				"addID":$("#addressName").val(),
-				"checkID":strify,
-                "files":fileList,
-			},
+			processData: false,
+			contentType: false,
+			data: formData,
 			success: function(result) {
 				if(result.status == 0) {
-					location = "index.jsp";
+					location = "../room/toahouselist.do";
 				} else {
-					refCode();
-					$("#password").val("");
+					location = "../room/addhouse.do";
 					layer.alert(result.msg, {
 						title: '提交结果'
 					});

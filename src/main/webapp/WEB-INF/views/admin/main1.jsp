@@ -74,8 +74,8 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe003;</i>房源信息</a>
                     <div class="p"><ul class="sub-menu">
-                        <li><a href="../ahouselist.action"><i class="icon-font">&#xe008;</i>房源列表</a></li>
-                         <li><a href="../toaddhouse.action"><i class="icon-font">&#xe008;</i>添加房源</a></li>
+                        <li><a href="../room/toahouselist.do"><i class="icon-font">&#xe008;</i>房源列表</a></li>
+                         <li><a href="../room/toaddhouse.do"><i class="icon-font">&#xe008;</i>添加房源</a></li>
        
                     </ul>
                     </div>
@@ -83,9 +83,9 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>租赁及合同信息</a>
              <div class="p">         <ul class="sub-menu">
-                        <li><a href="../zulist/findzulist.action"><i class="icon-font">&#xe017;</i>在租列表</a></li>
+                        <li><a href="../zulist/findzulist.do"><i class="icon-font">&#xe017;</i>在租列表</a></li>
                       
-                        <li><a href="/text2/checkout/getallcheckout.action"><i class="icon-font">&#xe037;</i>已退租列表</a></li>
+                        <li><a href="/text2/checkout/getallcheckout.do"><i class="icon-font">&#xe037;</i>已退租列表</a></li>
                         
                     </ul>
                     </div>
@@ -93,8 +93,8 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>申请列表</a>
         <div class="p">            <ul class="sub-menu">
-                        <li><a href="/text2/findapplylist.action"><i class="icon-font">&#xe037;</i>看房申请</a></li>
-                       	<li><a href="/text2/applyout/findallapplyout.action"><i class="icon-font">&#xe037;</i>退租申请</a></li>
+                        <li><a href="/text2/findapplylist.do"><i class="icon-font">&#xe037;</i>看房申请</a></li>
+                       	<li><a href="/text2/applyout/findallapplyout.do"><i class="icon-font">&#xe037;</i>退租申请</a></li>
                         
                     </ul>
                      </div>
@@ -102,8 +102,8 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>报障模块</a>
        <div class="p">              <ul class="sub-menu">
-                        <li><a href="/text2/wrong/wronglist.action"><i class="icon-font">&#xe017;</i>待处理报障</a></li>
-                       	<li><a href="/text2/wrong/selectall.action"><i class="icon-font">&#xe017;</i>已处理报障</a></li>
+                        <li><a href="/text2/wrong/wronglist.do"><i class="icon-font">&#xe017;</i>待处理报障</a></li>
+                       	<li><a href="/text2/wrong/selectall.do"><i class="icon-font">&#xe017;</i>已处理报障</a></li>
                         
                     </ul>
                      </div>
@@ -111,9 +111,9 @@
                  <li>
                     <a class="a"><i class="icon-font">&#xe003;</i>租金信息</a>
             <div class="p">          <ul class="sub-menu">
-                    <li><a href="/text2/paid/showaddpaid.action"><i class="icon-font">&#xe008;</i>我要收租</a></li>
-                        <li><a href="/text2/paid/topaidlist.action"><i class="icon-font">&#xe008;</i>租客待缴租金</a></li>
-                        <li><a href="/text2/paid/selectall.action"><i class="icon-font">&#xe008;</i>租客已缴租金</a></li>
+                    <li><a href="/text2/paid/showaddpaid.do"><i class="icon-font">&#xe008;</i>我要收租</a></li>
+                        <li><a href="/text2/paid/topaidlist.do"><i class="icon-font">&#xe008;</i>租客待缴租金</a></li>
+                        <li><a href="/text2/paid/selectall.do"><i class="icon-font">&#xe008;</i>租客已缴租金</a></li>
        
                     </ul>
                      </div>
@@ -121,8 +121,8 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>我的日程</a>
             <div class="p">          <ul class="sub-menu">
-                        <li><a href="/text2/schedule/selectAll.action"><i class="icon-font">&#xe017;</i>查看日程</a></li>
-                       	<li><a href="/text2/schedule/toinsert.action"><i class="icon-font">&#xe017;</i>添加日程</a></li>
+                        <li><a href="/text2/schedule/selectAll.do"><i class="icon-font">&#xe017;</i>查看日程</a></li>
+                       	<li><a href="/text2/schedule/toinsert.do"><i class="icon-font">&#xe017;</i>添加日程</a></li>
                         
                     </ul>
                      </div>
@@ -130,7 +130,7 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>其他操作</a>
                <div class="p">      <ul class="sub-menu">
-                        <li><a href="/text2/findalluserlist.action"><i class="icon-font">&#xe017;</i>账户管理</a></li>
+                        <li><a href="/text2/findalluserlist.do"><i class="icon-font">&#xe017;</i>账户管理</a></li>
                        
                         
                     </ul>

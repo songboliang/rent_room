@@ -199,7 +199,7 @@ public class UserController {
         String password = request.getParameter("password");
 
         User user = userService.getUserByPhoneAndPassword(phone,password);
-        List<Room> roomInfos = roomService.getRoomInfos();
+
 
         SendCodeVO sendCodeVO = new SendCodeVO();
 
@@ -209,8 +209,17 @@ public class UserController {
 
             sendCodeVO.setMsg("您的用户未注册，请先注册！");
         }else{
+            //保存用户信息
             request.getSession().setAttribute("userInfo",user);
+            //查询租房房源信息
+            List<Room> roomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.rent);
             request.getSession().setAttribute("roomInfos",roomInfos);
+            //查询新房房源信息
+            List<Room> bridalRoomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.bridal_chamber);
+            request.getSession().setAttribute("bridalRoomInfos",bridalRoomInfos);
+            //查询二手房房源信息
+            List<Room> secondHandRoomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.second_hand_house);
+            request.getSession().setAttribute("secondHandRoomInfos",secondHandRoomInfos);
             sendCodeVO.setStatus(RentConst.VaildCode.success);
 
             sendCodeVO.setMsg("您的用户未注册，请先注册！");

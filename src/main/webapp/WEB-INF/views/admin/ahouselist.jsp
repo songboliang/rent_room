@@ -54,21 +54,20 @@
 								
 									<tr
 										style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-										<td>${houselist.houseid }</td>
+										<td>${houselist.name }</td>
 
-										<td>${houselist.address}</td>
+										<td>${houselist.addressDesc}</td>
 										<td>${houselist.area}</td>
 										<td>${houselist.price}</td>
 										<td>${houselist.status}</td>
 										<td><a class="link-update"
-											href="findid.action?id=${houselist.id}">修改</a>
+											href="findid.do?id=${houselist.roomId}">修改</a>
 											&nbsp;&nbsp; 
-											<input type="hidden" name="id" value="${houselist.id}"/>
+											<input type="hidden" name="id" value="${houselist.roomId}"/>
 											<a class="link-del"
-											 href="deletehouse.action?id=${houselist.id}"
+											 href="deletehouse.do?id=${houselist.roomId}"
 											onclick="return window.confirm('确定删除吗？')">删除</a></td>
-										
-										
+
 									</tr>
 
 								</c:forEach>

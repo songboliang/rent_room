@@ -5,11 +5,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>邻居大妈</title>
+    <link rel="stylesheet" type="text/css" href="css/zxf_page.css"/>
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link type="text/css" href="css/css.css" rel="stylesheet" />
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/js.js"></script>
     <script type="text/javascript" src="login_files/login.js"></script>
+    <script type="text/javascript" src="js/zxf_page.js"></script>
     <script type="text/javascript">
         $(function(){
             //导航定位

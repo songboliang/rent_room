@@ -4,6 +4,16 @@
 
 <body>
 <jsp:include page="./common/head.jsp"/>
+<script type="text/javascript">
+ //翻页
+ $(".zxf_pagediv").createPage({
+  pageNum: 20,
+  current: 6,
+  backfun: function(e) {
+   //console.log(e);//回调
+  }
+ });
+</script>
  <div class="logo-phone">
   <div class="width1190">
    <h1 class="logo"><a href="index.jsp"><img src="images/logo.png" width="163" height="59" /></a></h1>
@@ -230,6 +240,8 @@
      <div class="price">¥ <strong>2890</strong><span class="font12">元/月</span></div>
      <div class="clears"></div>
     </dl>
+    <!--翻页-->
+    <div class="zxf_pagediv"></div>
    </div><!--pro-left/-->
    <div class="pro-right">
     <h2 class="right-title">新上房源</h2>

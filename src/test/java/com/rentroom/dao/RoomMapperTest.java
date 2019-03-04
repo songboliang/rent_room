@@ -1,5 +1,6 @@
 package com.rentroom.dao;
 
+import com.rentroom.pojo.Address;
 import com.rentroom.pojo.Furniture;
 import com.rentroom.pojo.Room;
 import com.rentroom.utils.RandUtil;
@@ -50,6 +51,8 @@ public class RoomMapperTest {
         furnitures.add(furniture2);
         furnitures.add(furniture3);
         room.setFurnitureList(furnitures);
+        Address address=new Address();
+        address.setAddId("32a0c2ca561c4a7ca098a40fe9001cd9");
         roomMapper.insertRoomInfo(room);
         roomMapper.saveRoomOrFurnitre(roomId,room.getFurnitureList());
     }

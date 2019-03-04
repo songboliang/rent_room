@@ -21,6 +21,10 @@
             <id column="furniture_id" property="furnitureId"/>
             <result property="furniturename" column="furniture_name"/>
         </collection>
+        <collection property="images" ofType="com.rentroom.pojo.Image">
+            <id column="img_Id" property="imgId"></id>
+            <result property="imgName" column="img_name"></result>
+        </collection>
     </resultMap>
 
     <resultMap type="com.rentroom.pojo.Address" id="Address">
@@ -38,7 +42,7 @@
     </insert>
 
     <select id="getRoomInfos" resultMap="roomResult1">
-          select r.room_id,r.name,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+          select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
 	      from room r
 	      left join room_furniture rf on r.room_id=rf.room_id
 	      left join furniture f on f.furniture_id=rf.furniture_id
@@ -47,7 +51,7 @@
     </select>
 
     <select id="getRoomInfo" resultMap="roomResult1">
-          select r.room_id,r.name,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+          select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
 	      from room r
 	      left join room_furniture rf on r.room_id=rf.room_id
 	      left join furniture f on f.furniture_id=rf.furniture_id
@@ -63,4 +67,14 @@
         </foreach>
     </insert>
 
+
+    <select id="getRoomInfosBysellType" resultMap="roomResult1">
+          select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+	      from room r
+	      left join room_furniture rf on r.room_id=rf.room_id
+	      left join furniture f on f.furniture_id=rf.furniture_id
+	      LEFT JOIN address a on a.address_id = r.address_Id
+	      where r.sellType = #{sellType}
+	      and r.status = '未出租';
+    </select>
 </mapper>

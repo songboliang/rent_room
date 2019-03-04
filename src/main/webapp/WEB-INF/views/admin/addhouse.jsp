@@ -167,8 +167,8 @@
                                 <th><i class="require-red">*</i>状态：</th>
                               <td>
                                 <select name="status" id="status" class="required">
-                                    <option value="未租赁" <c:if test="${room.status == '未出租'}">selected</c:if>>未出租</option>
-                                    <option value="已租赁" <c:if test="${room.status == '已出租'}">selected</c:if>>已出租</option>
+                                    <option value="未出租" <c:if test="${room.status == '未出租'}">selected</c:if>>未出租</option>
+                                    <option value="已出租" <c:if test="${room.status == '已出租'}">selected</c:if>>已出租</option>
                                 </select>
                             </td>
                             </tr>

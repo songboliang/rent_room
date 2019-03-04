@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentroom.dao.ImageMapper">
+
+    <resultMap id="Image" type="com.rentroom.pojo.Image">
+
+        <id column="img_Id" property="imgId"></id>
+        <result property="imgName" column="img_name"></result>
+
+    </resultMap>
+
+    <insert id="insertImageInfos" parameterType="map">
+        INSERT into image(img_id,img_name,room_id)
+        values
+        <foreach collection="images" item="Image" separator=",">
+             (#{Image.imgId,jdbcType=VARCHAR},#{Image.imgName,jdbcType=VARCHAR},#{roomId,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="insertImageInfo" parameterType="map">
+        insert into image(img_id,img_name,room_id)
+        values (#{imgId,jdbcType=VARCHAR},#{imgName,jdbcType=VARCHAR},#{roomId,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteImageInfo">
+        delete from image where img_id = #{imgId}
+    </delete>
+
+    <select id="selectImageInfos" resultMap="Image">
+      select * from Image where room_id = #{roomId}
+    </select>
+
+</mapper>

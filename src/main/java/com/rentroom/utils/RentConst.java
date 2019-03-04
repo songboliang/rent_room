@@ -69,7 +69,7 @@ public class RentConst {
 
     public interface Room{
 
-        String rented = "已经出租";
+        String rented = "已出租";
 
         String renting = "未出租";
 

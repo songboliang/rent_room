@@ -19,7 +19,7 @@ public class Room {
     private Date createDate;
     private List<Furniture> furnitureList;
     private Address address; //房源区域
-
+    private List<Image> images;
 
 
 
@@ -117,5 +117,13 @@ public class Room {
 
     public void setSellType(String sellType) {
         this.sellType = sellType;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

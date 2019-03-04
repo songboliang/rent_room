@@ -22,4 +22,18 @@ public interface RoomMapper {
     //通过Id查询房屋信息
 
     Room getRoomInfo(String roomId);
+
+    /**
+     * 通过售卖方式查询房屋信息
+     * @param sellType
+     * @return
+     */
+    List<Room> getRoomInfosBysellType(String sellType);
+
+
+    void  deleteRoomInfo();
+
+    List<Room> selectRoomInfosByConditions(@Param(value = "addressName")String addressName,@Param(value = "pricaA")double pricaA ,
+                                           @Param(value = "priceB") double priceB , @Param(value = "areaA") int areaA ,@Param(value = "areaB") int  areaB,
+                                           @Param(value = "houseType")String houseType);
 }
