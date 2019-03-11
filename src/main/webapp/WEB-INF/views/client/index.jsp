@@ -1,77 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page language="java" import="java.util.*" contentType="text/html;charset=UTF-8"%>
-<%@ include  file="./common/lable.jsp"%>
+<%@ include  file="/common/lable.jsp"%>
 <%
  String path = request.getContextPath();
  String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
          + path + "/";
 %>
 <body>
-<jsp:include page="./common/head.jsp"/>
- <div class="logo-phone">
-  <div class="width1190">
-   <h1 class="logo"><a href="index.jsp"><img src="images/logo.png" width="163" height="59" /></a></h1>
-   <div class="phones"><strong>021-63179891</strong></div>
-   <div class="clears"></div>
-  </div><!--width1190/-->
- </div><!--logo-phone/-->
- <div class="list-nav">
-  <div class="width1190">
-   <div class="list">
-    <h3>房源分类</h3>
-    <div class="list-list">
-     <dl>
-      <dt><a href="javascript:;">房源区域</a></dt>
-      <dd>
-       <a href="javascript:;">智慧园</a>
-       <a href="javascript:;">立民村</a>
-       <a href="javascript:;">塘口村</a>
-       <a href="javascript:;">勤劳村</a>
-       <a href="javascript:;">芦胜村</a>
-       <a href="javascript:;">知新村</a>
-      </dd>
-     </dl>
-     <dl>
-      <dt><a href="pro_zu.jsp">租房</a></dt>
-      <dd>
-       <a href="pro_zu.jsp">租金</a>
-       <a href="pro_zu.jsp">出租方式</a>
-       <a href="pro_zu.jsp">面积</a>
-       <a href="pro_zu.jsp">房型</a>
-      </dd>
-     </dl>
-     <dl>
-      <dt><a href="pro_xin.jsp">新房</a></dt>
-      <dd>
-       <a href="pro_xin.jsp">价格</a>
-       <a href="pro_xin.jsp">面积</a>
-       <a href="pro_xin.jsp">房型</a>
-      </dd>
-     </dl>
-     <dl>
-      <dt><a href="pro_er.jsp">二手房</a></dt>
-      <dd>
-       <a href="pro_er.jsp">价格</a>
-       <a href="pro_er.jsp">面积</a>
-       <a href="pro_er.jsp">房型</a>
-      </dd>
-     </dl>
-    </div>
-   </div><!--list/-->
-   <ul class="nav">
-    <li><a href="index.jsp">首页</a></li>
-    <li><a href="<%=basePath %>room/toprozu.do">租房</a></li>
-    <li><a href="pro_xin.jsp">新房</a></li>
-    <li><a href="pro_er.jsp">二手房</a></li>
-    <li class="zhiding"><a href="javascript:;">指定购房</a></li>
-    <li><a href="user_jingji.jsp">申请自由经纪人</a></li>
-    <li><a href="about.jsp">关于我们</a></li>
-    <div class="clears"></div>
-   </ul><!--nav/-->
-   <div class="clears"></div>
-  </div><!--width1190/-->
- </div><!--list-nav/-->
- <div class="banner" style="background:url(images/ban.jpg) center center no-repeat;"></div>
+<jsp:include page="/common/head.jsp"/>
  <div class="content">
   <div class="width1190">
    <h2 class="title">租房 <a href="pro_zu.jsp">更多&gt;&gt;</a></h2>
@@ -79,10 +15,10 @@
     <c:forEach  items="${sessionScope.roomInfos}"  var="proinfo" varStatus="status">
         <c:if test="${status.index<4}">
         <dl>
-            <dt><a href="proinfo.jsp"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
+            <dt><a href="<%=basePath %>room/toproinfo.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
             <dd>
-                <h3><a href="proinfo.jsp"></a>${proinfo.name}</h3>
-                <div class="hui">${proinfo.price}￥ | ${proinfo.area}平 | 精装修 </div>
+                <h3><a href="<%=basePath %>room/toproinfo.do?roomId=${proinfo.roomId}"></a>${proinfo.name}</h3>
+                <div class="hui">${proinfo.price}￥ | ${proinfo.area} | 精装修 </div>
             </dd>
         </dl>
         </c:if>
@@ -95,10 +31,10 @@
     <c:forEach  items="${sessionScope.bridalRoomInfos}"  var="proinfo" varStatus="status">
      <c:if test="${status.index<4}">
       <dl>
-       <dt><a href="proinfo.jsp"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
+       <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
        <dd>
-        <h3><a href="proinfo.jsp"></a>${proinfo.name}</h3>
-        <div class="hui">${proinfo.price}万￥ | ${proinfo.area} | 精装修</div>
+        <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"></a>${proinfo.name}</h3>
+        <div class="hui">${proinfo.price}万￥ | ${proinfo.area} | 简单装修</div>
        </dd>
       </dl>
      </c:if>
@@ -165,19 +101,19 @@
  </div><!--content/-->
  <div class="xinren">
   <div class="width1190">
-   <dl style="background:url(images/icon1.jpg) left center no-repeat;">
+   <dl style="background:url(/images/icon1.jpg) left center no-repeat;">
     <dt>承诺</dt>
     <dd>真实可信100%真房源<br />链家承诺，假一赔百</dd>
    </dl>
-   <dl style="background:url(images/icon2.jpg) left center no-repeat;">
+   <dl style="background:url(/images/icon2.jpg) left center no-repeat;">
     <dt>权威</dt>
     <dd>独家房源 覆盖全城<br />房源信息最权威覆盖最广</dd>
    </dl>
-   <dl style="background:url(images/icon3.jpg) left center no-repeat;">
+   <dl style="background:url(/images/icon3.jpg) left center no-repeat;">
     <dt>信赖</dt>
     <dd>万名置业顾问 专业服务<br />百万家庭的信赖之选</dd>
    </dl>
-   <dl style="background:url(images/icon4.jpg) left center no-repeat;">
+   <dl style="background:url(/images/icon4.jpg) left center no-repeat;">
     <dt>安全</dt>
     <dd>安心承诺 保驾护航<br />多重风险防范机制 无后顾之忧</dd>
    </dl>

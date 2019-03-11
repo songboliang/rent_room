@@ -10,6 +10,7 @@ import com.rentroom.service.IAddressService;
 import com.rentroom.service.IFurnitureService;
 import com.rentroom.service.IImageService;
 import com.rentroom.service.IRoomService;
+import com.rentroom.utils.Bean.PageBean;
 import com.rentroom.utils.RandUtil;
 import com.rentroom.utils.RentConst;
 import com.rentroom.utils.vo.SendCodeVO;
@@ -207,4 +208,79 @@ public class RoomController {
     }
 
 
+    @RequestMapping("/toprozu.do")
+    public String toprozu(Model model,@RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                          @RequestParam(value = "pageSize", required = false, defaultValue = "2") int pageSize ,
+                           HttpServletRequest request, HttpServletResponse response) {
+        PageBean<Room> roomInfos = this.findRoomInfo(request, response, pageCode, pageSize);
+        request.getSession().setAttribute("page", roomInfos);
+        return "client/pro_zu";
+    }
+
+    @RequestMapping("/toproxin.do")
+    public String toproxin(Model model,@RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                          @RequestParam(value = "pageSize", required = false, defaultValue = "2") int pageSize ,
+                          HttpServletRequest request, HttpServletResponse response) {
+        PageBean<Room> roomInfos = this.findRoomInfo(request, response, pageCode, pageSize);
+        request.getSession().setAttribute("page", roomInfos);
+
+        return "client/pro_xin";
+    }
+
+    @RequestMapping("/toproer.do")
+    public String toproer(Model model,@RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                          @RequestParam(value = "pageSize", required = false, defaultValue = "2") int pageSize ,
+                          HttpServletRequest request, HttpServletResponse response) {
+        PageBean<Room> roomInfos = this.findRoomInfo(request, response, pageCode, pageSize);
+        request.getSession().setAttribute("page", roomInfos);
+
+        return "client/pro_er";
+    }
+
+    private PageBean<Room> findRoomInfo(HttpServletRequest request, HttpServletResponse response,int pageCode,int pageSize){
+        String addressName = request.getParameter("addressName");
+        String price = request.getParameter("price");
+        String area = request.getParameter("area");
+        String houseType = request.getParameter("houseType");
+        String sellType = request.getParameter("sellType");
+        double priceA = 0;
+        double priceB = 0;
+        int areaA = 0;
+        int areaB = 0;
+        if(price != null ){
+            String[] split = price.split("-");
+            priceA = Double.valueOf(split[0]);
+            priceB = Double.valueOf(split[1]);
+        }
+        if(area != null ){
+            String[] split = area.split("-");
+            areaA = Integer.valueOf(split[0]);
+            areaB = Integer.valueOf(split[1]);
+        }
+        PageBean<Room> roomInfos = roomService.findRoomInfosByPage(addressName, priceA, priceB, areaA, areaB, houseType, sellType, pageCode, pageSize);
+
+        return  roomInfos;
+    }
+
+    @RequestMapping("/toproinfo.do")
+    public String toproinfo(Model model,@RequestParam(value = "roomId")String roomId, HttpServletRequest request, HttpServletResponse response) {
+
+        //通过房屋Id查询房屋信息
+        Room roomInfo = roomService.getRoomInfo(roomId);
+
+        request.getSession().setAttribute("roomInfo", roomInfo);
+
+        return "client/proinfo";
+    }
+
+    @RequestMapping("/toproinfosell.do")
+    public String toproInfoSell(Model model,@RequestParam(value = "roomId")String roomId, HttpServletRequest request, HttpServletResponse response) {
+
+        //通过房屋Id查询房屋信息
+        Room roomInfo = roomService.getRoomInfo(roomId);
+
+        request.getSession().setAttribute("roomInfo", roomInfo);
+
+        return "client/proinfosell";
+    }
 }

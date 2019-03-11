@@ -2,6 +2,7 @@ package com.rentroom.service;
 
 import com.rentroom.pojo.Furniture;
 import com.rentroom.pojo.Room;
+import com.rentroom.utils.Bean.PageBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -25,4 +26,14 @@ public interface IRoomService {
      */
     List<Room> getRoomInfosBysellType(String sellType);
 
+    /**
+     * 分页查询
+     * @param
+     * @param pageCode 当前页
+     * @param pageSize 每页的记录数
+     * @return
+     */
+    PageBean findRoomInfosByPage(String addressName,double priceA ,
+                                 double priceB ,int areaA , int  areaB,
+                                 String houseType ,  String sellType ,int pageCode, int pageSize);
 }

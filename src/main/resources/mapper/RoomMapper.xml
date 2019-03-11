@@ -77,4 +77,113 @@
 	      where r.sellType = #{sellType}
 	      and r.status = '未出租';
     </select>
+
+    <select id="selectRoomInfosByConditions" resultMap="roomResult1">
+          select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+	      from room r
+	      left join room_furniture rf on r.room_id=rf.room_id
+	      left join furniture f on f.furniture_id=rf.furniture_id
+	      LEFT JOIN address a on a.address_id = r.address_Id
+	      where r.status = '未出租'
+	    <if test=" sellType !=null and sellType != '' ">
+            and r.sellType =#{sellType}
+        </if>
+        <if test=" addressName !=null and addressName != '' ">
+            AND a.address_name = #{addressName}
+        </if>
+        <if test="houseType !=null and houseType != '' ">
+            AND r.houseType = #{houseType}
+        </if>
+        <if test="priceA gt 0 and priceB gt 0 ">
+           And r.price &gt;= #{priceA} and r.price &lt;= #{priceB}
+        </if>
+        <if test="areaA gt 0 and areaB gt 0 ">
+            And r.area &gt;= #{areaA} and r.area &lt;= #{areaB}
+        </if>
+    </select>
+
+    <select id="selectRoomInfosByConditionsAndPage" resultMap="roomResult1">
+        select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,f.furniture_id,f.furniture_name,a.address_id,a.address_name
+        from room r
+        left join room_furniture rf on r.room_id=rf.room_id
+        left join furniture f on f.furniture_id=rf.furniture_id
+        LEFT JOIN address a on a.address_id = r.address_Id
+        where r.status = '未出租'
+        <if test=" sellType !=null and sellType != '' ">
+            and r.sellType =#{sellType}
+        </if>
+        <if test=" addressName !=null and addressName != '' ">
+            AND a.address_name = #{addressName}
+        </if>
+        <if test="houseType !=null and houseType != '' ">
+            AND r.houseType = #{houseType}
+        </if>
+        <if test="priceA gt 0 and priceB gt 0 ">
+            And r.price &gt;= #{priceA} and r.price &lt;= #{priceB}
+        </if>
+        <if test="areaA gt 0 and areaB gt 0 ">
+            And r.area &gt;= #{areaA} and r.area &lt;= #{areaB}
+        </if>
+        limit #{start},#{size};
+    </select>
+
+
+    <resultMap type="com.rentroom.pojo.Room" id="roomResult2">
+        <id column="room_id" property="roomId"/>
+        <result column="name" property="name"/>
+        <result column="sellType" property="sellType"/>
+        <result column="houseType" property="houseType"/>
+        <result column="addressDesc" property="addressDesc"/>
+        <result column="status" property="status"/>
+        <result column="price" property="price"/>
+        <result column="area" property="area"/>
+        <result column="phone" property="phone"/>
+        <result column="createDate" property="createDate"/>
+        <association property="address" resultMap="Address"/>
+        <collection property="furnitureList" ofType="map" select="findFurnitureinfosByRoomId" column="room_id"  javaType="java.util.List" >
+            <id column="furniture_id" property="furnitureId"/>
+            <result property="furniturename" column="furniture_name"/>
+        </collection>
+        <collection property="images" ofType="map" select="findImageInfosByRoomId" column="room_id"  javaType="java.util.List" >
+            <id column="img_Id" property="imgId"></id>
+            <result property="imgName" column="img_name"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectRoomInfosByConditionsAndPage1" resultMap="roomResult2">
+        select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,a.address_id,a.address_name
+        from room r
+        LEFT JOIN address a on a.address_id = r.address_Id
+        where r.status = '未出租'
+        <if test=" sellType !=null and sellType != '' ">
+            and r.sellType =#{sellType}
+        </if>
+        <if test=" addressName !=null and addressName != '' ">
+            AND a.address_name = #{addressName}
+        </if>
+        <if test="houseType !=null and houseType != '' ">
+            AND r.houseType = #{houseType}
+        </if>
+        <if test="priceA gt 0 and priceB gt 0 ">
+            And r.price &gt;= #{priceA} and r.price &lt;= #{priceB}
+        </if>
+        <if test="areaA gt 0 and areaB gt 0 ">
+            And r.area &gt;= #{areaA} and r.area &lt;= #{areaB}
+        </if>
+    </select>
+
+    <select id="findFurnitureinfosByRoomId" parameterType="String" resultType="map">
+        select f.furniture_id,f.furniture_name
+        from furniture f
+        left join room_furniture rf on f.furniture_id=rf.furniture_id
+        where rf.room_id = #{room_id}
+    </select>
+
+
+    <select id="findImageInfosByRoomId" parameterType="String" resultType="map">
+        select i.img_Id ,i.img_name
+        from image i
+        where i.room_Id = #{room_id};
+    </select>
+
 </mapper>

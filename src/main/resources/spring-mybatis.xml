@@ -35,6 +35,8 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- 扫描model包 使用别名 -->
         <property name="typeAliasesPackage" value="com.rentroom.pojo"/>
+        <!-- 加载mybatis的配置文件 -->
+        <property name="configLocation" value="classpath:mybatis.xml"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
@@ -55,5 +57,6 @@
 
     <!-- 配置基于注解的声明式事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
 
 </beans>

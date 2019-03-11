@@ -21,6 +21,7 @@ import com.rentroom.utils.vo.SendCodeVO;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -211,15 +212,7 @@ public class UserController {
         }else{
             //保存用户信息
             request.getSession().setAttribute("userInfo",user);
-            //查询租房房源信息
-            List<Room> roomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.rent);
-            request.getSession().setAttribute("roomInfos",roomInfos);
-            //查询新房房源信息
-            List<Room> bridalRoomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.bridal_chamber);
-            request.getSession().setAttribute("bridalRoomInfos",bridalRoomInfos);
-            //查询二手房房源信息
-            List<Room> secondHandRoomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.second_hand_house);
-            request.getSession().setAttribute("secondHandRoomInfos",secondHandRoomInfos);
+
             sendCodeVO.setStatus(RentConst.VaildCode.success);
 
             sendCodeVO.setMsg("您的用户未注册，请先注册！");
@@ -255,5 +248,20 @@ public class UserController {
         return  request.getSession();
     }
 
+
+
+    @RequestMapping("/toindex.do")
+    public String toindex(Model model, HttpServletRequest request, HttpServletResponse response){
+        //查询租房房源信息
+        List<Room> roomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.rent);
+        request.getSession().setAttribute("roomInfos",roomInfos);
+        //查询新房房源信息
+        List<Room> bridalRoomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.bridal_chamber);
+        request.getSession().setAttribute("bridalRoomInfos",bridalRoomInfos);
+        //查询二手房房源信息
+        List<Room> secondHandRoomInfos = roomService.getRoomInfosBysellType(RentConst.SellType.second_hand_house);
+        request.getSession().setAttribute("secondHandRoomInfos",secondHandRoomInfos);
+        return "client/index";
+    }
 
 }

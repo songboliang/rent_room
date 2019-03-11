@@ -65,7 +65,8 @@
 			},
 			success: function(result) {
 				if(result.status == 0) {
-					location = "index.jsp";
+					// window.location.href = "http://localhost:8080/RentRoom/user/toindex.do";
+					location = "user/toindex.do";
 				} else {
 					refCode();
 					$("#password").val("");

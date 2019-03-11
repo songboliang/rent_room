@@ -1,12 +1,15 @@
 package com.rentroom.service.impl;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.rentroom.dao.ImageMapper;
 import com.rentroom.dao.RoomMapper;
 import com.rentroom.pojo.Furniture;
 import com.rentroom.pojo.Image;
 import com.rentroom.pojo.Room;
 import com.rentroom.service.IRoomService;
+import com.rentroom.utils.Bean.PageBean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -64,5 +67,33 @@ public class RoomServiceImpl implements IRoomService {
             roomInfos.get(i).setImages(images);
         }
         return roomInfos;
+    }
+
+
+    @Override
+    public PageBean findRoomInfosByPage(String addressName, double priceA, double priceB, int areaA, int areaB, String houseType, String sellType, int pageCode, int pageSize) {
+/*        //先查询数据总量
+        List<Room> rooms = roomMapper.selectRoomInfosByConditions(addressName, priceA, priceB, areaA, areaB, houseType, sellType);
+        //计算总量
+        int totalCount = rooms.size();
+        //总页数
+        int totalPage = (int) Math.ceil(totalCount/pageSize);
+
+        int start = (pageCode-1)*pageSize;
+
+        //调用分页查询方法，其实就是查询所有数据，mybatis自动帮我们进行分页计算
+        List<Room> page = roomMapper.selectRoomInfosByConditionsAndPage(addressName, priceA, priceB, areaA, areaB, houseType, sellType ,start,pageSize);
+        for (int i=0 ; i<page.size() ; i++) {
+            List<Image> images = imageMapper.selectImageInfos(page.get(i).getRoomId());
+            page.get(i).setImages(images);
+        }*/
+
+        //使用Mybatis分页插件
+        PageHelper.startPage(pageCode, pageSize);
+
+        //调用分页查询方法，其实就是查询所有数据，mybatis自动帮我们进行分页计算
+        Page<Room> page = roomMapper.selectRoomInfosByConditionsAndPage1(addressName,priceA,priceB,areaA,areaB,houseType,sellType);
+
+        return new PageBean(pageCode, (int)Math.ceil((double)(page.getTotal() / (double)pageSize)), (int)page.getTotal(), pageSize, page.getResult());
     }
 }

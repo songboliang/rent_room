@@ -1,5 +1,6 @@
 package com.rentroom.dao;
 
+import com.github.pagehelper.Page;
 import com.rentroom.pojo.Furniture;
 import com.rentroom.pojo.Room;
 import org.apache.ibatis.annotations.Param;
@@ -33,7 +34,19 @@ public interface RoomMapper {
 
     void  deleteRoomInfo();
 
-    List<Room> selectRoomInfosByConditions(@Param(value = "addressName")String addressName,@Param(value = "pricaA")double pricaA ,
+    List<Room> selectRoomInfosByConditions(@Param(value = "addressName")String addressName,@Param(value = "priceA")double priceA ,
                                            @Param(value = "priceB") double priceB , @Param(value = "areaA") int areaA ,@Param(value = "areaB") int  areaB,
-                                           @Param(value = "houseType")String houseType);
+                                           @Param(value = "houseType")String houseType , @Param(value = "sellType") String sellType);
+
+
+    List<Room> selectRoomInfosByConditionsAndPage(@Param(value = "addressName")String addressName,@Param(value = "priceA")double priceA ,
+                                           @Param(value = "priceB") double priceB , @Param(value = "areaA") int areaA ,@Param(value = "areaB") int  areaB,
+                                           @Param(value = "houseType")String houseType , @Param(value = "sellType") String sellType,
+                                           @Param(value = "start") int start ,@Param(value = "size") int size  );
+
+    Page<Room> selectRoomInfosByConditionsAndPage1(@Param(value = "addressName")String addressName,@Param(value = "priceA")double priceA ,
+                                                  @Param(value = "priceB") double priceB , @Param(value = "areaA") int areaA ,@Param(value = "areaB") int  areaB,
+                                                  @Param(value = "houseType")String houseType , @Param(value = "sellType") String sellType);
+
+
 }

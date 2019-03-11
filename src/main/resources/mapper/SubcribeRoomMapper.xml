@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentroom.dao.SubscribeRoomMapper">
+
+    <resultMap id="subscribeRoomResult" type="com.rentroom.pojo.SubscribeRoom">
+
+        <id column="id" property="id"></id>
+        <result property="roomId" column="room_id"></result>
+        <result property="roomName" column="roomName"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="userName" column="userName"></result>
+        <result property="userPhone" column="userphone"></result>
+        <result property="landlordPhone" column="landlordPhone"></result>
+        <result property="price" column="price"></result>
+
+    </resultMap>
+
+    <insert id="insertSubscribeRoom" parameterType="SubscribeRoom">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO subscribeRoom(id,room_id,user_id,roomName,userName,userphone,landlordPhone,price)
+        values (#{id,jdbcType=INTEGER},#{roomId,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{landlordPhone,jdbcType=VARCHAR},#{price,jdbcType=DOUBLE})
+    </insert>
+
+
+
+</mapper>

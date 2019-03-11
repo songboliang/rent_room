@@ -28,7 +28,7 @@
     </delete>
 
     <select id="selectImageInfos" resultMap="Image">
-      select * from Image where room_id = #{roomId}
+      select * from image where room_id = #{roomId}
     </select>
 
 </mapper>
