@@ -2,14 +2,8 @@ package com.rentroom.controller;
 
 
 
-import com.rentroom.pojo.Address;
-import com.rentroom.pojo.Furniture;
-import com.rentroom.pojo.Image;
-import com.rentroom.pojo.Room;
-import com.rentroom.service.IAddressService;
-import com.rentroom.service.IFurnitureService;
-import com.rentroom.service.IImageService;
-import com.rentroom.service.IRoomService;
+import com.rentroom.pojo.*;
+import com.rentroom.service.*;
 import com.rentroom.utils.Bean.PageBean;
 import com.rentroom.utils.RandUtil;
 import com.rentroom.utils.RentConst;
@@ -46,6 +40,8 @@ public class RoomController {
     private IAddressService addressService;
     @Autowired
     private IImageService imageService;
+    @Autowired
+    private ISubscribeRoomService subscribeRoomService;
 
     @RequestMapping("/roomInfo.do")
     public String getRoomInfos(HttpServletRequest request, HttpServletResponse response) {
@@ -266,7 +262,19 @@ public class RoomController {
     public String toproinfo(Model model,@RequestParam(value = "roomId")String roomId, HttpServletRequest request, HttpServletResponse response) {
 
         //通过房屋Id查询房屋信息
+        User user =(User)request.getSession().getAttribute("userInfo");
         Room roomInfo = roomService.getRoomInfo(roomId);
+        SubscribeRoom subscribeRoom = subscribeRoomService.findSubscribeRoom(user.getId(), roomId);
+
+        SendCodeVO sendCodeVO=new SendCodeVO();
+        if(subscribeRoom!=null){
+            sendCodeVO.setStatus(RentConst.Subscribe.success);
+            sendCodeVO.setMsg("已关注该房屋");
+        }else{
+            sendCodeVO.setStatus(RentConst.Subscribe.failed);
+            sendCodeVO.setMsg("未关注该房屋");
+        }
+        request.getSession().setAttribute("sendCodeVO", sendCodeVO);
 
         request.getSession().setAttribute("roomInfo", roomInfo);
 
@@ -277,7 +285,19 @@ public class RoomController {
     public String toproInfoSell(Model model,@RequestParam(value = "roomId")String roomId, HttpServletRequest request, HttpServletResponse response) {
 
         //通过房屋Id查询房屋信息
+        User user =(User)request.getSession().getAttribute("userInfo");
         Room roomInfo = roomService.getRoomInfo(roomId);
+        SubscribeRoom subscribeRoom = subscribeRoomService.findSubscribeRoom(user.getId(), roomId);
+
+        SendCodeVO sendCodeVO=new SendCodeVO();
+        if(subscribeRoom!=null){
+            sendCodeVO.setStatus(RentConst.Subscribe.success);
+            sendCodeVO.setMsg("已关注该房屋");
+        }else{
+            sendCodeVO.setStatus(RentConst.Subscribe.failed);
+            sendCodeVO.setMsg("未关注该房屋");
+        }
+        request.getSession().setAttribute("sendCodeVO", sendCodeVO);
 
         request.getSession().setAttribute("roomInfo", roomInfo);
 

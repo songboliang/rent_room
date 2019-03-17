@@ -41,60 +41,20 @@
     </c:forEach>
     <div class="clears"></div>
    </div><!--index-fang-list/-->
-   
+   <c:forEach  items="${sessionScope.secondHandRoomInfos}"  var="proinfo" varStatus="status">
+    <c:if test="${status.index<4}">
+     <dl>
+      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
+      <dd>
+       <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"></a>${proinfo.name}</h3>
+       <div class="hui">${proinfo.price}万￥ | ${proinfo.area} | 简单装修</div>
+      </dd>
+     </dl>
+    </c:if>
+   </c:forEach>
    <h2 class="title">二手房 <a href="pro_er.jsp">更多&gt;&gt;</a></h2>
    <div class="index-ershou">
-    <div class="in-er-left">
-     <a href="proinfo.jsp"><img src="images/fangt1.jpg" width="380" height="285" /></a>
-     <div class="in-er-left-text"><strong class="fl">闵行南方发的撒的发的司法</strong><strong class="fr alignRight">¥2841</strong></div>
-    </div><!--in-er-left/-->
-    <div class="in-er-right">
-     <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang1.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.jsp">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang3.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.jsp">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang8.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.jsp">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang5.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.jsp">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <div class="clears"></div>
-    </div><!--in-er-right/-->
+
     <div class="clears"></div>
    </div><!--index-ershou/-->
   </div><!--width1190/-->
@@ -120,59 +80,6 @@
    <div class="clears"></div>
   </div><!--width1190/-->
  </div><!--xinren/-->
- <div class="footer">
-  <div class="width1190">
-   <div class="fl"><a href="index.jsp"><strong>邻居大妈</strong></a><a href="about.jsp">关于我们</a><a href="contact.jsp">联系我们</a><a href="user.jsp">个人中心</a></div>
-   <div class="fr">
-    <dl>
-     <dt><img src="images/erweima.png" width="76" height="76" /></dt>
-     <dd>微信扫一扫<br />房价点评，精彩发布</dd>
-    </dl>
-    <dl>
-     <dt><img src="images/erweima.png" width="76" height="76" /></dt>
-     <dd>微信扫一扫<br />房价点评，精彩发布</dd>
-    </dl>
-    <div class="clears"></div>
-   </div>
-   <div class="clears"></div>
-  </div><!--width1190/-->
- </div><!--footer/-->
- <div class="copy">Copyright@ 2015 邻居大妈 版权所有 沪ICP备1234567号-0&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a target="_blank" href="http://www.webqin.net/">秦王网络</a> </div>
- <div class="bg100"></div>
- <div class="zhidinggoufang">
-  <h2>指定购房 <span class="close">X</span></h2>
-  <form action="#" method="get">
-   <div class="zhiding-list">
-    <label>选择区域：</label>
-    <select>
-     <option>智慧园</option>
-     <option>立民村</option>
-     <option>塘口村</option>
-     <option>勤劳村</option>
-     <option>芦胜村</option>
-     <option>知新村</option>
-    </select>
-   </div>
-   <div class="zhiding-list">
-    <label>方式：</label>
-    <select>
-     <option>租房</option>
-     <option>新房</option>
-     <option>二手房</option>
-    </select>
-   </div>
-   <div class="zhiding-list">
-    <label>联系方式：</label>
-    <input type="text" />
-   </div>
-   <div class="zhidingsub"><input type="submit" value="提交" /></div>
-  </form>
-  <div class="zhidingtext">
-   <h3>指定购房注意事宜：</h3>
-   <p>1、请详细输入您所需要购买的房源信息(精确到小区)</p>
-   <p>2、制定购房申请提交后，客服中心会在24小时之内与您取得联系</p>
-   <p>3、如有任何疑问，请随时拨打我们的电话：400-000-0000</p>
-  </div><!--zhidingtext/-->
- </div><!--zhidinggoufang/-->
+ <jsp:include page="/common/tail.jsp"></jsp:include>
 </body>
 </html>

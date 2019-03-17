@@ -1,11 +1,9 @@
 package com.rentroom.utils.vo;
 
-import java.awt.image.BufferedImage;
-import java.io.OutputStream;
 
 public class CanvasVO {
 
-    private String rand;;
+    private String rand;
 
     private String image;
 

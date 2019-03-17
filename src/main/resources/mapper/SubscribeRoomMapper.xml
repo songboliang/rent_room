@@ -7,13 +7,12 @@
 
         <id column="id" property="id"></id>
         <result property="roomId" column="room_id"></result>
-        <result property="roomName" column="roomName"></result>
         <result property="userId" column="user_id"></result>
+        <result property="roomName" column="roomName"></result>
         <result property="userName" column="userName"></result>
         <result property="userPhone" column="userphone"></result>
         <result property="landlordPhone" column="landlordPhone"></result>
         <result property="price" column="price"></result>
-
     </resultMap>
 
     <insert id="insertSubscribeRoom" parameterType="SubscribeRoom">
@@ -21,9 +20,16 @@
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
         INSERT INTO subscribeRoom(id,room_id,user_id,roomName,userName,userphone,landlordPhone,price)
-        values (#{id,jdbcType=INTEGER},#{roomId,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{landlordPhone,jdbcType=VARCHAR},#{price,jdbcType=DOUBLE})
+        values (#{id,jdbcType=INTEGER},#{roomId,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},#{roomName,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{landlordPhone,jdbcType=VARCHAR},#{price,jdbcType=DOUBLE})
     </insert>
 
+    <select id="findSubscribeRoom" resultMap="subscribeRoomResult">
+        select * from subscribeRoom s where s.user_id = #{userId} and  s.room_id = #{roomId}
+    </select>
+
+    <delete id="deleteSubcribeRoom">
+        delete FROM subscribeRoom  where user_id = #{userId} and  room_id = #{roomId}
+    </delete>
 
 
 </mapper>

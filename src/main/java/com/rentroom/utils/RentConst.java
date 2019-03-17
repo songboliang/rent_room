@@ -97,4 +97,12 @@ public class RentConst {
 
     }
 
+    public interface Subscribe{
+
+        int success = 0; //关注
+
+        int failed = 1;  //取消关注
+
+    }
+
 }

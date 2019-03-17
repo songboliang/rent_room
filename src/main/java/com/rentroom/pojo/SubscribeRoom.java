@@ -8,7 +8,7 @@ public class SubscribeRoom {
 
     private String roomName; //门牌号
 
-    private String userId;
+    private long userId;
 
     private String userName; //用户姓名
 
@@ -16,7 +16,7 @@ public class SubscribeRoom {
 
     private String landlordPhone;//房东电话
 
-    private String price;
+    private double price;
 
     public String getRoomId() {
         return roomId;
@@ -42,11 +42,11 @@ public class SubscribeRoom {
         this.id = id;
     }
 
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -66,11 +66,19 @@ public class SubscribeRoom {
         this.landlordPhone = landlordPhone;
     }
 
-    public String getPrice() {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
