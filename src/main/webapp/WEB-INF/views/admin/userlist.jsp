@@ -15,11 +15,6 @@
     <link rel="stylesheet" type="text/css" href="/text2/css/main.css"/>
     <script type="text/javascript" src="/text2/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/text2/js/libs/modernizr.min.js"></script>
-	</script>
-	<style type="text/css">
-	
-	
-	</style>
 	<script type="text/javascript">
 	var error="${param.error}";
 	if(error=="deletesuccess"){
@@ -35,7 +30,7 @@
 <h1>用户列表</h1>
 </div>
 	<form id="houseForm" name="houseForm"
-		action="/text2/findalluserlist.action"
+		action="/user/findalluserlist.do"
 		method=post >
 						 <div class="result-title">
                     <div class="result-list">
@@ -52,27 +47,27 @@
 									style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
 									<td>租客用户名</td>
 									<td>租客姓名</td>
-									<td>租客身份证号码</td>
-									<td>租客联系电话</td>
+									<td>租客qq</td>
+									<td>账户状态</td>
 									
 									
 									<td>操作</td>
 								
 									
 								</tr>
-								<c:forEach items="${userlist}" var="userlist">
+								<c:forEach items="${sessionScope.page.beanList}" var="userlist">
 									<tr
 										style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-										<td>${userlist.user.username}</td>
-
-										<td>${userlist.name}</td>
-										<td>${userlist.idcard}</td>
 										<td>${userlist.phone}</td>
-										
+
+										<td>${userlist.username}</td>
+										<td>${userlist.qq}</td>
+										<td>${userlist.status}</td>
+
 										<td>
 										
 													<a class="link-update"
-											href="/text2/deleteuserlist.action?id=${userlist.user.id}"
+											href="/text2/deleteuserlist.action?id=${userlist.id}"
 											onclick="return window.confirm('确定删除吗？')">删除</a>
 										
 												
@@ -93,19 +88,18 @@
 						<tr>
 							<span id=pagelink>
 								<div style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; margin-top:10px">
-									共[<B>${p.total}</B>]条记录，共[<B>${p.pages}</B>]页
+									共[<B>${sessionScope.page.totalCount}</B>]条记录，共[<B>${sessionScope.page.totalPage}</B>]页
 									,
 
-									<c:if test="${ p.pageNum > 1 }">
-													[<A href="javascript:to_page(${p.prePage})">前一页</A>]
+									<c:if test="${ sessionScope.page.pageCode > 1 }">
+													[<A href="javascript:cancelSubscribe(${sessionScope.page.pageCode-1})">前一页</A>]
 												</c:if>
 										<input type="hidden" name="page" id="page" value=""/>
-									第<B>${p.pageNum}</B>页
+									第<B>${sessionScope.page.pageCode}</B>页
 
-									<c:if test="${ p.pageNum < p.pages }">
-													[<A href="javascript:to_page(${p.nextPage})">后一页</A>] 
+									<c:if test="${ sessionScope.page.pageCode< sessionScope.page.totalPage }">
+													[<A href="javascript:to_page(${sessionScope.page.pageCode+1})">后一页</A>]
 												</c:if>
-
 									
 								</div>
 							</span>

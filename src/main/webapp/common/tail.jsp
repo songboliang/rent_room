@@ -2,13 +2,17 @@
 <%@ page language="java" import="java.util.*" contentType="text/html;charset=UTF-8"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
+            + "/" ;
 %>
 <html>
 <body>
 <div class="footer">
     <div class="width1190">
-        <div class="fl"><a href="index.jsp"><strong>邻居大妈</strong></a><a href="about.jsp">关于我们</a><a href="contact.jsp">联系我们</a><a href="user.jsp">个人中心</a></div>
+        <div class="fl"><a href="index.jsp"><strong>邻居大妈</strong></a>
+            <a href="about.jsp">关于我们</a>
+            <a href="contact.jsp">联系我们</a>
+            <a href="<%=basePath %>rentroom/user.do">个人中心</a></div>
         <div class="fr">
             <dl>
                 <dt><img src="${pageContext.request.contextPath}/images/erweima.png" width="76" height="76" /></dt>

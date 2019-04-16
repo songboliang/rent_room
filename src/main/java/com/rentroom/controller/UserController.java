@@ -5,15 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 
 
 import com.alibaba.fastjson.JSON;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentroom.pojo.Room;
 import com.rentroom.pojo.User;
 import com.rentroom.service.IRoomService;
 import com.rentroom.service.IUserService;
-import com.rentroom.utils.GetSMS;
-import com.rentroom.utils.RandUtil;
-import com.rentroom.utils.RentConst;
-import com.rentroom.utils.VerifyCode;
+import com.rentroom.utils.*;
+import com.rentroom.utils.Bean.PageBean;
 import com.rentroom.utils.vo.CanvasVO;
 import com.rentroom.utils.vo.ResultVO;
 import com.rentroom.utils.vo.ResultVOUtil;
@@ -23,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -89,25 +89,34 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/sendSMS.do")
-    public ModelAndView getsendSMS(HttpServletRequest request, HttpServletResponse response)throws IOException{
+    public SendCodeVO getsendSMS(HttpServletRequest request, HttpServletResponse response)throws Exception{
         response.setCharacterEncoding("utf-8");
 
-        String phone =request.getParameter("account");
-        GetSMS.getmMssage(phone);
-        //把短信验证码保存到session里边
-        request.getSession().setAttribute("sendCode", GetSMS.randNum);
+        String phone =request.getParameter("phone");
+        SendSmsResponse sendSms = SmsUtils.sendSms(phone, RandUtil.getRandomNum());
+
+       String msgCode =sendSms.getCode();
 
         ModelAndView modelAndView=new ModelAndView(new MappingJackson2JsonView());
 
         SendCodeVO sendCodeVO =new SendCodeVO();
 
-        sendCodeVO.setMsg("发送信息成功");
+        if(msgCode!=null){
+            //把短信验证码保存到session里边
+            request.getSession().setAttribute("sendCode", msgCode);
 
-        sendCodeVO.setStatus(RentConst.MsgStatus.success);
+            sendCodeVO.setMsgCode(msgCode);
 
-        modelAndView.addObject(JSON.toJSON(sendCodeVO));
+            sendCodeVO.setMsg("消息发送成功");
 
-        return modelAndView;
+            sendCodeVO.setStatus(RentConst.MsgStatus.success);
+
+        }else{
+            sendCodeVO.setMsg("消息发送失败");
+
+            sendCodeVO.setStatus(RentConst.MsgStatus.failed);
+        }
+        return sendCodeVO;
     }
 
 
@@ -143,30 +152,27 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/vailSMSCode.do")
-    public ModelAndView vailSMSCode(HttpServletRequest request, HttpServletResponse response)throws IOException{
+    public SendCodeVO vailSMSCode(HttpServletRequest request, HttpServletResponse response)throws IOException{
 
         ModelAndView modelAndView=new ModelAndView(new MappingJackson2JsonView());
 
-        String sendCode = (String) request.getSession().getAttribute("sendCode");
+        String msgCode = (String) request.getSession().getAttribute("sendCode");
 
         String code=request.getParameter("code");
 
         SendCodeVO sendCodeVO =new SendCodeVO();
 
-        if(sendCode==code){
+        if(msgCode.equals(code)){
             sendCodeVO.setStatus(RentConst.VaildCode.success);
 
-            sendCodeVO.setMsg("验证码输入正确");
+            sendCodeVO.setMsg("短信验证码输入正确");
         }else {
             sendCodeVO.setStatus(RentConst.VaildCode.failed);
 
-            sendCodeVO.setMsg("验证码输入错误");
+            sendCodeVO.setMsg("短信验证码输入错误");
         }
-        JSONObject jsonObject = JSONObject.fromObject(sendCodeVO);
 
-        modelAndView.addObject(jsonObject);
-
-        return modelAndView;
+        return sendCodeVO;
     }
 
     @ResponseBody
@@ -200,7 +206,6 @@ public class UserController {
         String password = request.getParameter("password");
 
         User user = userService.getUserByPhoneAndPassword(phone,password);
-
 
         SendCodeVO sendCodeVO = new SendCodeVO();
 
@@ -239,7 +244,6 @@ public class UserController {
         if(user != null){
             session.removeAttribute("userInfo");
         }
-
     }
 
 
@@ -263,5 +267,73 @@ public class UserController {
         request.getSession().setAttribute("secondHandRoomInfos",secondHandRoomInfos);
         return "client/index";
     }
+
+    @ResponseBody
+    @RequestMapping("/changeUserPwd.do")
+    public SendCodeVO changeUserPwd(HttpServletRequest request, HttpServletResponse response){
+        String userId =request.getParameter("userId");
+        String newpassword = request.getParameter("newpassword");
+        String newpassword1 = request.getParameter("newpassword1");
+        User user = userService.selectUser(Long.valueOf(userId));
+        SendCodeVO sendCodeVO = new SendCodeVO();
+        if(user == null) {
+            sendCodeVO.setStatus(1);
+            sendCodeVO.setMsg("没有该用户");
+        }else {
+            if(newpassword.equals(newpassword1)){
+               user.setPassword(newpassword);
+               userService.updateUserPwd(user);
+               sendCodeVO.setStatus(0);
+               sendCodeVO.setMsg("修改密码成功");
+            }
+        }
+
+        return sendCodeVO;
+
+    }
+
+
+    @RequestMapping("/findalluserlist.do")
+    public String toaddhoust(Model model, HttpServletRequest request, HttpServletResponse response
+            , @RequestParam(value = "pageSize", required = false, defaultValue = "1") int pageCode,
+                             @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) {
+        PageBean page = userService.findAll(pageCode, pageSize);
+        request.getSession().setAttribute("page",page);
+        model.addAttribute("mainPage", "userlist.jsp");
+        return "admin/main1";
+    }
+
+    @ResponseBody
+    @RequestMapping("/modifyUser.do")
+    public SendCodeVO modifyUserinfo(HttpServletRequest request, HttpServletResponse response){
+        User user =(User)request.getSession().getAttribute("userInfo");
+        String username =request.getParameter("username");
+        String sex =request.getParameter("sex");
+        String age =request.getParameter("age");
+        String qq =request.getParameter("qq");
+        String signature =request.getParameter("signature");
+        SendCodeVO sendCodeVO = new SendCodeVO();
+        if(user!=null){
+            user.setUsername(username);
+            user.setSex(sex);
+            user.setAge(Integer.valueOf(age));
+            user.setQq(Integer.valueOf(qq));
+            user.setSignature(signature);
+            int i = userService.updateUser(user);
+            if(i == 1){
+                sendCodeVO.setMsg("用户信息修改成功");
+                sendCodeVO.setStatus(RentConst.VaildCode.success);
+            }else{
+                sendCodeVO.setMsg("用户信息修改失败");
+                sendCodeVO.setStatus(RentConst.VaildCode.failed);
+            }
+        } else{
+            sendCodeVO.setMsg("用户信息修改失败");
+            sendCodeVO.setStatus(RentConst.VaildCode.failed);
+        }
+        return sendCodeVO;
+    }
+
+
 
 }

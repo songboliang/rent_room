@@ -78,8 +78,8 @@
             <li><a href="<%=basePath %>room/toproxin.do?sellType=新房">新房</a></li>
             <li><a href="<%=basePath %>room/toproer.do?sellType=二手房">二手房</a></li>
             <li class="zhiding"><a href="javascript:;">指定购房</a></li>
-            <li><a href="user_jingji.jsp">申请自由经纪人</a></li>
-            <li><a href="<%=basePath %>room/toproer.do">关于我们</a></li>
+            <li><a href="<%=basePath %>rentroom/user.do">个人中心</a></li>
+            <li><a href="<%=basePath %>rentroom/about.do">关于我们</a></li>
             <div class="clears"></div>
         </ul><!--nav/-->
         <div class="clears"></div>

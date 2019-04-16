@@ -28,8 +28,8 @@
     <div class="xun-car">
      <a href="javascript:;" class="xwjg">¥<strong>${sessionScope.roomInfo.price}</strong>元/月</a>
      <a href="javascript:void(0);" id="subscribe" class="projrgwc" >
-        <span id="sp"><c:if test="${sessionScope.sendCodeVO.status==0}">取消关注</c:if>
-        <c:if test="${sessionScope.sendCodeVO.status==1}">关注房屋</c:if>
+        <span id="sp"><c:if test="${sessionScope.sendCodeVO.status==0}">取消预约</c:if>
+        <c:if test="${sessionScope.sendCodeVO.status==1}">我要看房</c:if>
         </span>
      </a>
     </div><!--xun-car/-->
@@ -74,6 +74,7 @@
 <jsp:include page="/common/tail.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
+
  $(function() {
   $("#subscribe").click(function(){
 
@@ -86,9 +87,15 @@
     success : function(msg2) {
 
      if(msg2.JSONObject.status == 1){
-      $("#sp").html("关注房源");
+      $("#sp").html("我要看房");
+      layer.msg("您已取消预约", {
+       icon: 5
+      });
      }else if(msg2.JSONObject.status == 0){
-      $("#sp").html("取消关注");
+      $("#sp").html("取消预约");
+      layer.msg("预约成功", {
+       icon: 5
+      });
      }
     }
    });

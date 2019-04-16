@@ -78,11 +78,11 @@
        <div class="pro-fang">详细地址:${proinfo.addressDesc}</div>
        <div class="pra-fa">房东联系方式：${proinfo.phone}  发布时间：${proinfo.createDate} </div>
       </dd>
-      <div class="price">¥ <strong>${proinfo.price}</strong><span class="font12">元/月</span></div>
+      <div class="price">¥ <strong>${proinfo.price}</strong><span class="font12">万</span></div>
       <div class="clears"></div>
      </dl>
     </c:forEach>
-    <form class="listForm" method="post" action="<%=basePath%>/customer/findByPage.do">
+    <form class="listForm" method="post" action="<%=basePath %>room/toproxin.do?sellType=新房">
      <div class="row" >
       <div class="form-inline">
        <label style="font-size:14px;margin-top:22px;">
@@ -117,11 +117,11 @@
 
        <ul class="pagination" style="float:right;" >
         <li>
-         <a href="<%=basePath%>/customer/findByPage.do?pageCode=1"><strong>首页</strong></a>
+         <a href="<%=basePath %>room/toproxin.do?sellType=新房&pageCode=1"><strong>首页</strong></a>
         </li>
         <li>
          <c:if test="${sessionScope.page.pageCode > 2}">
-          <a href="<%=basePath%>/customer/findByPage.do?pageCode=${sessionScope.page.pageCode - 1}">&laquo;</a>
+          <a href="<%=basePath %>room/toproxin.do?sellType=新房&pageCode=${sessionScope.page.pageCode - 1}">&laquo;</a>
          </c:if>
         </li>
 
@@ -157,18 +157,18 @@
          </c:if>
          <c:if test="${i != requestScope.page.pageCode}">
           <li>
-           <a href="<%=basePath%>/customer/findByPage.do?pageCode=${i}&pageSize=${sessionScope.page.pageSize}">${i}</a>
+           <a href="<%=basePath %>room/toproxin.do?sellType=新房&pageCode=${i}&pageSize=${sessionScope.page.pageSize}">${i}</a>
           </li>
          </c:if>
         </c:forEach>
 
         <li>
          <c:if test="${sessionScope.page.pageCode < sessionScope.page.totalPage}">
-          <a href="<%=basePath%>/customer/findByPage.do?pageCode=${sessionScope.page.pageCode + 1}">&raquo;</a>
+          <a href="<%=basePath %>room/toproxin.do?sellType=新房&pageCode=${sessionScope.page.pageCode + 1}">&raquo;</a>
          </c:if>
         </li>
         <li>
-         <a href="<%=basePath%>/customer/findByPage.do?pageCode=${sessionScope.page.totalPage}"><strong>末页</strong></a>
+         <a href="<%=basePath %>room/toproxin.do?sellType=新房&pageCode=${sessionScope.page.totalPage}"><strong>末页</strong></a>
         </li>
        </ul>
       </div>
@@ -179,27 +179,27 @@
     <h2 class="right-title">新上房源</h2>
     <div class="right-pro">
      <dl>
-      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="images/fang8.jpg" /></a></dt>
+      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/images/fang8.jpg" /></a></dt>
       <dd>
        <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}">中装一室一厅，楼层好，采光足，稀缺房源</a></h3>
        <div class="pro-fang">一室一厅 38平 南</div>
-       <div class="right-price">1100元/月</div>
+       <div class="right-price">45万</div>
       </dd>
      </dl>
      <dl>
-      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="images/fang7.jpg" /></a></dt>
+      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/images/fang7.jpg" /></a></dt>
       <dd>
        <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}">中装一室一厅，楼层好，采光足，稀缺房源</a></h3>
        <div class="pro-fang">一室一厅 38平 南</div>
-       <div class="right-price">1100元/月</div>
+       <div class="right-price">45万</div>
       </dd>
      </dl>
      <dl>
-      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="images/fang6.jpg" /></a></dt>
+      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/images/fang6.jpg" /></a></dt>
       <dd>
        <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}">中装一室一厅，楼层好，采光足，稀缺房源</a></h3>
        <div class="pro-fang">一室一厅 38平 南</div>
-       <div class="right-price">1100元/月</div>
+       <div class="right-price">45万</div>
       </dd>
      </dl>
     </div><!--right-pro/-->

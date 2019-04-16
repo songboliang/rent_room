@@ -303,4 +303,14 @@ public class RoomController {
 
         return "client/proinfosell";
     }
+
+    @RequestMapping("/userguanzhu.do")
+    public String userguanzhu(HttpServletRequest request, HttpServletResponse response){
+        User user =(User)request.getSession().getAttribute("userInfo");
+        List<SubscribeRoom> subscribeRoomList = subscribeRoomService.findSubscribeRoomList(user.getId());
+        log.info(subscribeRoomList.size());
+        request.getSession().setAttribute("subscribeRoomList", subscribeRoomList);
+        return "client/user_guanzhu";
+    }
+
 }

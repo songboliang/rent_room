@@ -9,6 +9,11 @@ public class User {
     private String phone;
     private String password;
     private String username;
+    private String imagePath;
+    private String sex;
+    private int age;
+    private int qq;
+    private String signature; //个性签名
     private String role;
     private int status;
     private Date regTime;
@@ -70,4 +75,47 @@ public class User {
     }
 
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getQq() {
+        return qq;
+    }
+
+    public void setQq(int qq) {
+        this.qq = qq;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
 }

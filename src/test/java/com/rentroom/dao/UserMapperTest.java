@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
+import java.util.List;
 
 // 加载spring配置文件
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -47,5 +48,24 @@ public class UserMapperTest {
         System.out.println(user.getUsername());
 
     }
+
+    @Test
+    public void testfindAll(){
+
+        List<User> all = dao.findAll();
+
+        System.out.println(all.size());
+
+    }
+
+    @Test
+    public void testupdate(){
+
+        User user = dao.selectUser(4);
+        user.setQq(97531372);
+        int i = dao.updateUser(user);
+        System.out.println(i);
+    }
+
 
 }

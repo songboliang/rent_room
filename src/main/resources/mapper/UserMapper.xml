@@ -12,8 +12,8 @@
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
-        insert into user(id,phone,password,username,role,status,regTime)
-        values (#{id,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{regTime,jdbcType=DATE})
+        insert into user(id,phone,password,username,imagePath,sex,age,qq,signature,role,status,regTime)
+        values (#{id,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR},#{imagePath,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{qq,jdbcType=INTEGER},#{signature,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{regTime,jdbcType=DATE})
     </insert>
 
     <select id="getUserByPhone" parameterType="String" resultType="User">
@@ -23,5 +23,39 @@
     <select id="getUserByPhoneAndPassword"  resultType="User">
       SELECT * FROM user where phone = #{phone} AND password = #{password} AND status = '1' limit 1;
     </select>
+
+    <update id="updateUserPwd" parameterType="User">
+        UPDATE user SET password = #{password} WHERE id = #{id}
+    </update>
+
+    <select id="findAll" resultType="User">
+        SELECT * FROM user
+    </select>
+
+    <update id="updateUser" parameterType="User">
+        update user
+        <set >
+            <if test="username != null and username != ''" >
+                username = #{username},
+            </if>
+            <if test="imagePath != null" >
+                imagePath = #{imagePath},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex},
+            </if>
+            <if test="age != null and age != ''" >
+                age = #{age},
+            </if>
+            <if test="qq != null and qq != ''" >
+                qq = #{qq},
+            </if>
+            <if test="signature != null and signature != ''" >
+                signature = #{signature,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
 
 </mapper>

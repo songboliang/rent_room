@@ -70,15 +70,14 @@
 				url: "user/sendSMS.do",
 				type: "post",
 				data: {
-					"account": $("#phone").val(),
-					"type": "info"
+					"phone": $("#phone").val()
 				},
 				success: function(result) {
-					if(result.JSONObject.status == 0) {
+					if(result.status == 0) {
 						$("#msg-btn").text(curCount + "秒后再次获取"); // 更改按钮文字
 						InterValObj = setInterval(SetRemainTime, 1000); // 启动计时器timer处理函数，1秒执行一次
 					} else {
-						layui.msg(result.JSONObject.msg);
+						layui.msg(result.msg);
 						$("#msg-btn").val("重新发送验证码");
 						$("#msg-btn").removeClass("layui-btn-disabled");
 						$("#msg-btn").removeAttr("disabled"); // 移除禁用状态改为可用

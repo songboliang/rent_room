@@ -16,11 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/subscribeRoom")
@@ -45,13 +47,11 @@ public class SubscribeRoomController {
             sendCodeVO.setStatus(RentConst.Subscribe.failed);
         }else{
             SubscribeRoom subscribeRoom = new SubscribeRoom();
-            subscribeRoom.setRoomId(roomInfo.getRoomId());
-            subscribeRoom.setRoomName(roomInfo.getName());
-            subscribeRoom.setPrice(roomInfo.getPrice());
-            subscribeRoom.setLandlordPhone(roomInfo.getPhone());
+            subscribeRoom.setRoom(roomInfo);
             subscribeRoom.setUserId(user.getId());
             subscribeRoom.setUserName(user.getUsername());
             subscribeRoom.setUserPhone(user.getPhone());
+            subscribeRoom.setCreateDate(new Date());
             subscribeRoomService.insertSubscribeRoom(subscribeRoom);
             sendCodeVO.setStatus(RentConst.Subscribe.success);
             sendCodeVO.setMsg("房屋信息已被关注");
@@ -62,25 +62,23 @@ public class SubscribeRoomController {
         return modelAndView;
     }
 
+    @ResponseBody
+    @RequestMapping("/cancelSubscribe.do")
+    public SendCodeVO main(HttpServletRequest request, HttpServletResponse response){
+        User user= (User)request.getSession().getAttribute("userInfo");
+        String roomId = request.getParameter("roomId");
 
-    public void main(){
-
+        SubscribeRoom subscribeRoom1 = subscribeRoomService.findSubscribeRoom(user.getId(), roomId);
         SendCodeVO sendCodeVO = new SendCodeVO();
-        sendCodeVO.setMsg("已取消房源关注");
-        sendCodeVO.setStatus(RentConst.Subscribe.failed);
+        if(subscribeRoom1!=null) {
+            subscribeRoomService.cancelSubscribeRoom(user.getId(), roomId);
+            sendCodeVO.setMsg("已取消房源关注");
+            sendCodeVO.setStatus(RentConst.Subscribe.success);
+        }else{
+            sendCodeVO.setMsg("取消房源关注失败");
+            sendCodeVO.setStatus(RentConst.Subscribe.failed);
+        }
+        return sendCodeVO;
     }
 
-    public void main1(){
-
-        SendCodeVO sendCodeVO = new SendCodeVO();
-        sendCodeVO.setMsg("已取消房源关注");
-        sendCodeVO.setStatus(RentConst.Subscribe.failed);
-    }
-
-    public void main2(){
-
-        SendCodeVO sendCodeVO = new SendCodeVO();
-        sendCodeVO.setMsg("已取消房源关注");
-        sendCodeVO.setStatus(RentConst.Subscribe.failed);
-    }
 }

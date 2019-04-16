@@ -90,7 +90,7 @@
     <h2 class="right-title">新上房源</h2>
     <div class="right-pro">
      <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang8.jpg" /></a></dt>
+      <dt><a href="proinfo.jsp"><img src="${pageContext.request.contextPath}/images/fang8.jpg" /></a></dt>
       <dd>
        <h3><a href="proinfo.jsp">中装一室一厅，楼层好，采光足，稀缺房源</a></h3>
        <div class="pro-fang">一室一厅 38平 南</div>
@@ -98,7 +98,7 @@
       </dd>
      </dl>
      <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang7.jpg" /></a></dt>
+      <dt><a href="proinfo.jsp"><img src="${pageContext.request.contextPath}/images/fang7.jpg" /></a></dt>
       <dd>
        <h3><a href="proinfo.jsp">中装一室一厅，楼层好，采光足，稀缺房源</a></h3>
        <div class="pro-fang">一室一厅 38平 南</div>
@@ -106,7 +106,7 @@
       </dd>
      </dl>
      <dl>
-      <dt><a href="proinfo.jsp"><img src="images/fang6.jpg" /></a></dt>
+      <dt><a href="proinfo.jsp"><img src="${pageContext.request.contextPath}/images/fang6.jpg" /></a></dt>
       <dd>
        <h3><a href="proinfo.jsp">中装一室一厅，楼层好，采光足，稀缺房源</a></h3>
        <div class="pro-fang">一室一厅 38平 南</div>

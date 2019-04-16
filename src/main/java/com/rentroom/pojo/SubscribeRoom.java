@@ -1,12 +1,10 @@
 package com.rentroom.pojo;
 
+import java.util.Date;
+
 public class SubscribeRoom {
 
     private int id;
-
-    private String roomId;
-
-    private String roomName; //门牌号
 
     private long userId;
 
@@ -14,25 +12,9 @@ public class SubscribeRoom {
 
     private String userPhone;
 
-    private String landlordPhone;//房东电话
+    private Date createDate;
 
-    private double price;
-
-    public String getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
+    private Room room;
 
     public int getId() {
         return id;
@@ -58,14 +40,6 @@ public class SubscribeRoom {
         this.userPhone = userPhone;
     }
 
-    public String getLandlordPhone() {
-        return landlordPhone;
-    }
-
-    public void setLandlordPhone(String landlordPhone) {
-        this.landlordPhone = landlordPhone;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -74,11 +48,19 @@ public class SubscribeRoom {
         this.userName = userName;
     }
 
-    public double getPrice() {
-        return price;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

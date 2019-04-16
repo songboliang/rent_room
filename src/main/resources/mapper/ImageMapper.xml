@@ -7,7 +7,6 @@
 
         <id column="img_Id" property="imgId"></id>
         <result property="imgName" column="img_name"></result>
-
     </resultMap>
 
     <insert id="insertImageInfos" parameterType="map">

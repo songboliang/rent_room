@@ -41,20 +41,19 @@
     </c:forEach>
     <div class="clears"></div>
    </div><!--index-fang-list/-->
-   <c:forEach  items="${sessionScope.secondHandRoomInfos}"  var="proinfo" varStatus="status">
-    <c:if test="${status.index<4}">
-     <dl>
-      <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
-      <dd>
-       <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"></a>${proinfo.name}</h3>
-       <div class="hui">${proinfo.price}万￥ | ${proinfo.area} | 简单装修</div>
-      </dd>
-     </dl>
-    </c:if>
-   </c:forEach>
    <h2 class="title">二手房 <a href="pro_er.jsp">更多&gt;&gt;</a></h2>
-   <div class="index-ershou">
-
+   <div class="index-fang-list">
+    <c:forEach  items="${sessionScope.secondHandRoomInfos}"  var="proinfo" varStatus="status">
+     <c:if test="${status.index<4}">
+      <dl>
+       <dt><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"><img src="${pageContext.request.contextPath}/image/${proinfo.images[0].imgName}" width="286" height="188" /></a></dt>
+       <dd>
+        <h3><a href="<%=basePath %>room/toproinfosell.do?roomId=${proinfo.roomId}"></a>${proinfo.name}</h3>
+        <div class="hui">${proinfo.price}万￥ | ${proinfo.area} | 简单装修</div>
+       </dd>
+      </dl>
+     </c:if>
+    </c:forEach>
     <div class="clears"></div>
    </div><!--index-ershou/-->
   </div><!--width1190/-->

@@ -6,6 +6,7 @@ import com.rentroom.service.ISubscribeRoomService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("subscribeRoomService")
 public class SubscribeRoomServiceImpl implements ISubscribeRoomService {
@@ -27,4 +28,11 @@ public class SubscribeRoomServiceImpl implements ISubscribeRoomService {
     public void cancelSubscribeRoom(Long userId, String roomId) {
         subscribeRoomMapper.deleteSubcribeRoom(userId,roomId);
     }
+
+    @Override
+    public List<SubscribeRoom> findSubscribeRoomList(long userId) {
+        return subscribeRoomMapper.findSubscribeRoomList(userId);
+    }
+
+
 }

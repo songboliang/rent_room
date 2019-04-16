@@ -4,7 +4,17 @@ public class SendCodeVO {
 
     private int status;
 
+    private String msgCode;
+
     private String msg;
+
+    public String getMsgCode() {
+        return msgCode;
+    }
+
+    public void setMsgCode(String msgCode) {
+        this.msgCode = msgCode;
+    }
 
     public int getStatus() {
         return status;

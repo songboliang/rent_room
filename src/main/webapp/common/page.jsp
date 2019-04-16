@@ -2,12 +2,13 @@
 <%@ page language="java" import="java.util.*" contentType="text/html;charset=UTF-8"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
+            + "/";
 %>
 <html>
 <body>
 <!--翻页-->
-<form class="listForm" method="post" action="<%=basePath%>/customer/findByPage.do">
+<form class="listForm" method="post" action="<%=basePath %>room/toprozu.do?sellType=租房">
     <div class="row" >
         <div class="form-inline">
             <label style="font-size:14px;margin-top:22px;">
@@ -42,11 +43,11 @@
 
             <ul class="pagination" style="float:right;" >
                 <li>
-                    <a href="<%=basePath%>/customer/findByPage.do?pageCode=1"><strong>首页</strong></a>
+                    <a href="<%=basePath %>room/toprozu.do?sellType=租房&pageCode=1"><strong>首页</strong></a>
                 </li>
                 <li>
                     <c:if test="${sessionScope.page.pageCode > 2}">
-                        <a href="<%=basePath%>/customer/findByPage.do?pageCode=${sessionScope.page.pageCode - 1}">&laquo;</a>
+                        <a href="<%=basePath %>room/toprozu.do?sellType=租房&pageCode=${sessionScope.page.pageCode - 1}">&laquo;</a>
                     </c:if>
                 </li>
 
@@ -82,18 +83,18 @@
                     </c:if>
                     <c:if test="${i != requestScope.page.pageCode}">
                         <li>
-                            <a href="<%=basePath%>/customer/findByPage.do?pageCode=${i}&pageSize=${sessionScope.page.pageSize}">${i}</a>
+                            <a href="<%=basePath %>room/toprozu.do?sellType=租房&pageCode=${i}&pageSize=${sessionScope.page.pageSize}">${i}</a>
                         </li>
                     </c:if>
                 </c:forEach>
 
                 <li>
                     <c:if test="${sessionScope.page.pageCode < sessionScope.page.totalPage}">
-                        <a href="<%=basePath%>/customer/findByPage.do?pageCode=${sessionScope.page.pageCode + 1}">&raquo;</a>
+                        <a href="<%=basePath %>room/toprozu.do?sellType=租房&pageCode=${sessionScope.page.pageCode + 1}">&raquo;</a>
                     </c:if>
                 </li>
                 <li>
-                    <a href="<%=basePath%>/customer/findByPage.do?pageCode=${sessionScope.page.totalPage}"><strong>末页</strong></a>
+                    <a href="<%=basePath %>room/toprozu.do?sellType=租房&pageCode=${sessionScope.page.totalPage}"><strong>末页</strong></a>
                 </li>
             </ul>
         </div>

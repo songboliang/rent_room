@@ -1,7 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page language="java" import="java.util.*" contentType="text/html;charset=UTF-8"%>
 <%@ include  file="/common/lable.jsp"%>
-
+<%
+ String path = request.getContextPath();
+ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+         + path + "/";
+%>
 <body>
 <jsp:include page="/common/head.jsp"/>
 
@@ -9,14 +13,14 @@
   <div class="width1190">
    <div class="contleft">
     <ul class="leftNav">
-     <li class="leftNavCur"><a href="about.jsp">关于我们</a></li>
+     <li class="leftNavCur"><a href="<%=basePath %>rentroom/about.do">关于我们</a></li>
      <li><a href="contact.jsp">联系我们</a></li>
     </ul><!--leftNav/-->
    </div><!--contleft/-->
    <div class="contright">
     <h2 class="rightat">公司简介</h2>
     <div class="about">
-     <img src="images/about.jpg" /><br />
+     <img src="${pageContext.request.contextPath}/images/about.jpg" /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从创立之初，百度便将“让人们最平等、便捷地获取信息，找到所求”作为自己的使命，成立以来，公司秉承“以用户为导向”的理念，不断坚持技术创新，致力于为用户提供“简单，可依赖”的互联网搜索产品及服务，其中包括：以网络搜索为主的功能性搜索，以贴吧为主的社区搜索，针对各区域、行业所需的垂直搜索，Mp3搜索，以及门户频道、IM等，全面覆盖了中文网络世界所有的搜索需求，根据第三方权威数据，百度在中国的搜索份额超过80%。
 <br /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在面对用户的搜索产品不断丰富的同时，百度还创新性地推出了基于搜索的营销推广服务，并成为最受企业青睐的互联网营销推广平台。如今，中国已有数十万家企业使用了百度的搜索推广服务，不断提升企业自身的品牌及运营效率。通过持续的商业模式创新，百度正进一步带动整个互联网行业和中小企业的经济增长，推动社会经济的发展和转型。
