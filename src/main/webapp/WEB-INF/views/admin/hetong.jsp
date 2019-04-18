@@ -32,16 +32,16 @@
 </head>
 <body>
 <div><br />
-	<form name="hetong" action="/text2/hetong/updatehetong.action">
+	<form name="contract" action="/text2/contract/updatehetong.action">
 	<div class="title">房屋租赁合同</div>
-	<input type="hidden" name="house_id" value="${hetong.house_id}"/>
-	<p>出租方：<span name="chuzu">${hetong.chuzu}</span>（以下简称甲方）；</p>　　　
-	<p>承租方：<span name="zuke">${hetong.zuke}</span>（以下简称乙方）。　</p>　
-	<p>租赁房屋地址：<span name="zuke">${hetong.address}</span>　</p>　
+	<input type="hidden" name="contractId" value="${sessionScope.contract.contractId}"/>
+	<p>出租方：<span name="chuzu">${sessionScope.contract.lessor}</span>（以下简称甲方）；</p>　　　
+	<p>承租方：<span name="zuke">${sessionScope.contract.lessee}</span>（以下简称乙方）。　</p>　
+	<p>租赁房屋地址：<span name="zuke">${sessionScope.contract.address}</span>　</p>　
 	<p>依据《中华人民共和国合同法》有关条款，甲乙双方经过充分协商，就乙方租赁甲方房屋事宜达成如下协议：</p>
 	<p>一、乙方租赁甲方房屋，以下简称租赁房屋。</p>
-	<p>二、起租时间：<span name="fromdate" >${hetong.fromdate}</span>，退租时间：<span name="todate">${hetong.todate}</span>。
-	在合同签订之日，乙方需向甲方支付房屋租金￥<span name="price">${hetong.price}</span>。如续租，请提前3天通知甲方，并重新办理租赁手续。<br /></p>　　　　
+	<p>二、起租时间：<span name="fromdate" >${sessionScope.contract.startDate}</span>，退租时间：<span name="todate">${sessionScope.contract.endDate}</span>。
+	在合同签订之日，乙方需向甲方支付房屋租金￥<span name="price">${sessionScope.contract.price}</span>。如续租，请提前3天通知甲方，并重新办理租赁手续。<br /></p>　　　　
 	<p>三、违约处理：</p>　
 	<p>甲方违约：</p>　
 	<p>1．如甲方未能及时将押金退还乙方，甲方每天应按押金的2％向乙方支付违约金；</p>

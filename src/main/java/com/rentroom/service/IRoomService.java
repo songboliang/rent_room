@@ -14,7 +14,7 @@ public interface IRoomService {
     void insertRoomInfo(Room room);
 
     //批量查询
-    List<Room> getRoomInfos();
+    PageBean getRoomInfos(int pageCode, int pageSize);
 
     //通过Id查询房屋信息
     Room getRoomInfo(String roomId);
@@ -36,4 +36,10 @@ public interface IRoomService {
     PageBean findRoomInfosByPage(String addressName,double priceA ,
                                  double priceB ,int areaA , int  areaB,
                                  String houseType ,  String sellType ,int pageCode, int pageSize);
+
+
+    Room findRoomInfoByRoomname(String name);
+
+    int updateRoomInfo(Room room);
+
 }

@@ -50,7 +50,7 @@
 									<td>操作</td>
 									
 								</tr>
-								<c:forEach items="${houselist}" var="houselist">
+								<c:forEach items="${sessionScope.page.beanList}" var="houselist">
 								
 									<tr
 										style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
@@ -81,19 +81,18 @@
 						<tr>
 							<span id=pagelink>
 								<div style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; margin-top:10px">
-									共[<B>${p.total}</B>]条记录，共[<B>${p.pages}</B>]页
+									共[<B>${sessionScope.page.totalCount}</B>]条记录，共[<B>${sessionScope.page.totalPage}</B>]页
 									,
 
-									<c:if test="${ p.pageNum > 1 }">
-													[<A href="javascript:to_page(${p.prePage})">前一页</A>]
-												</c:if>
+									<c:if test="${ sessionScope.page.pageCode > 1 }">
+										[<A href="javascript:cancelSubscribe(${sessionScope.page.pageCode-1})">前一页</A>]
+									</c:if>
 										<input type="hidden" name="page" id="page" value=""/>
-									第<B>${p.pageNum}</B>页
+									第<B>${sessionScope.page.pageCode}</B>页
 
-									<c:if test="${ p.pageNum < p.pages }">
-													[<A href="javascript:to_page(${p.nextPage})">后一页</A>] 
-												</c:if>
-
+									<c:if test="${ sessionScope.page.pageCode< sessionScope.page.totalPage }">
+										[<A href="javascript:to_page(${sessionScope.page.pageCode+1})">后一页</A>]
+									</c:if>
 									
 								</div>
 							</span>

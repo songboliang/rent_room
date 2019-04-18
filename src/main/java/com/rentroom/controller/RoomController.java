@@ -46,11 +46,11 @@ public class RoomController {
     @RequestMapping("/roomInfo.do")
     public String getRoomInfos(HttpServletRequest request, HttpServletResponse response) {
 
-        List<Room> roomInfos = roomService.getRoomInfos();
-
-        request.getSession().setAttribute("roomInfos", roomInfos);
-
-        System.out.println("进入方法");
+//        List<Room> roomInfos = roomService.getRoomInfos();
+//
+//        request.getSession().setAttribute("roomInfos", roomInfos);
+//
+//        System.out.println("进入方法");
         return null;
 
     }
@@ -175,9 +175,11 @@ public class RoomController {
 
 
     @RequestMapping("/toahouselist.do")
-    public String toahouselist(Model model, HttpServletRequest request, HttpServletResponse response) {
-        List<Room> roomInfos = roomService.getRoomInfos();
-        request.getSession().setAttribute("houselist", roomInfos);
+    public String toahouselist(Model model, HttpServletRequest request, HttpServletResponse response,
+                               @RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                               @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) {
+        PageBean page = roomService.getRoomInfos(pageCode, pageSize);
+        request.getSession().setAttribute("page", page);
         model.addAttribute("mainPage", "ahouselist.jsp");
         return "admin/main1";
     }
@@ -195,10 +197,12 @@ public class RoomController {
 
     //修改房屋信息
     @RequestMapping("/deletehouse.do")
-    public String deletehouse(Model model,String id , HttpServletRequest request, HttpServletResponse response) {
+    public String deletehouse(Model model,String id , HttpServletRequest request, HttpServletResponse response,
+                              @RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                              @RequestParam(value = "pageSize", required = false, defaultValue = "2") int pageSize) {
 
-        List<Room> roomInfos = roomService.getRoomInfos();
-        request.getSession().setAttribute("houselist", roomInfos);
+        PageBean page = roomService.getRoomInfos(pageCode, pageSize);
+        request.getSession().setAttribute("page", page);
         model.addAttribute("mainPage", "ahouselist.jsp");
         return "admin/main1";
     }

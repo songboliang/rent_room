@@ -186,4 +186,32 @@
         where i.room_Id = #{room_id};
     </select>
 
+
+    <resultMap type="com.rentroom.pojo.Room" id="roomResult3">
+        <id column="room_id" property="roomId"/>
+        <result column="name" property="name"/>
+        <result column="sellType" property="sellType"/>
+        <result column="houseType" property="houseType"/>
+        <result column="addressDesc" property="addressDesc"/>
+        <result column="status" property="status"/>
+        <result column="price" property="price"/>
+        <result column="area" property="area"/>
+        <result column="phone" property="phone"/>
+        <result column="createDate" property="createDate"/>
+    </resultMap>
+
+    <select id="findRoomInfoByRoomname" parameterType="String" resultMap="roomResult3">
+        select r.* from room r where r.name = #{name} and r.status = '未出租'
+    </select>
+
+    <update id="updateRoomInfo" parameterType="Room">
+        UPDATE room SET status = #{status} where room_id =#{roomId}
+    </update>
+
+
+    <select id="getAllRoomInfos" resultMap="roomResult2">
+    select r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate,a.address_id,a.address_name
+    from room r
+    LEFT JOIN address a on a.address_id = r.address_Id
+    </select>
 </mapper>

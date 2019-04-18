@@ -18,6 +18,8 @@ public interface RoomMapper {
     //批量查询
     List<Room>  getRoomInfos();
 
+    Page  getAllRoomInfos();
+
     void saveRoomOrFurnitre(@Param(value = "roomId")String roomId,@Param(value = "furnitures") List<Furniture> furnitures);
 
     //通过Id查询房屋信息
@@ -48,5 +50,12 @@ public interface RoomMapper {
                                                   @Param(value = "priceB") double priceB , @Param(value = "areaA") int areaA ,@Param(value = "areaB") int  areaB,
                                                   @Param(value = "houseType")String houseType , @Param(value = "sellType") String sellType);
 
+    /**
+     * 通过门牌号查找房屋信息
+     * @param name
+     * @return
+     */
+    Room findRoomInfoByRoomname(String name);
 
+    int updateRoomInfo(Room room);
 }

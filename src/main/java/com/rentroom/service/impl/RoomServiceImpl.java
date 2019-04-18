@@ -34,15 +34,13 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
-    public List<Room> getRoomInfos() {
-        List<Room> roomInfos = roomMapper.getRoomInfos();
+    public PageBean getRoomInfos(int pageCode, int pageSize) {
+        PageHelper.startPage(pageCode, pageSize);
 
-        //查询所有房屋的图片信息
-        for (int i=0 ; i<roomInfos.size() ; i++) {
-            List<Image> images = imageMapper.selectImageInfos(roomInfos.get(i).getRoomId());
-            roomInfos.get(i).setImages(images);
-        }
-        return roomInfos;
+        //调用分页查询方法，其实就是查询所有数据，mybatis自动帮我们进行分页计算
+        Page<Room> page = roomMapper.getAllRoomInfos();
+
+        return new PageBean(pageCode, (int)Math.ceil((double)(page.getTotal() / (double)pageSize)), (int)page.getTotal(), pageSize, page.getResult());
     }
 
 
@@ -95,5 +93,16 @@ public class RoomServiceImpl implements IRoomService {
         Page<Room> page = roomMapper.selectRoomInfosByConditionsAndPage1(addressName,priceA,priceB,areaA,areaB,houseType,sellType);
 
         return new PageBean(pageCode, (int)Math.ceil((double)(page.getTotal() / (double)pageSize)), (int)page.getTotal(), pageSize, page.getResult());
+    }
+
+
+    @Override
+    public Room findRoomInfoByRoomname(String name) {
+        return roomMapper.findRoomInfoByRoomname(name);
+    }
+
+    @Override
+    public int updateRoomInfo(Room room) {
+        return roomMapper.updateRoomInfo(room);
     }
 }

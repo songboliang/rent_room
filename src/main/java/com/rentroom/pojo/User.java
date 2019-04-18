@@ -17,6 +17,7 @@ public class User {
     private String role;
     private int status;
     private Date regTime;
+    private String userCard; //身份证
 
     public long getId() {
         return id;
@@ -117,5 +118,13 @@ public class User {
 
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    public String getUserCard() {
+        return userCard;
+    }
+
+    public void setUserCard(String userCard) {
+        this.userCard = userCard;
     }
 }

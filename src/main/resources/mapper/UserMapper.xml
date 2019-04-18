@@ -53,6 +53,9 @@
             <if test="signature != null and signature != ''" >
                 signature = #{signature,jdbcType=VARCHAR},
             </if>
+            <if test="userCard != null" >
+                userCard = #{userCard,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>

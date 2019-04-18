@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="/text2/css/main.css"/>
     <script type="text/javascript" src="/text2/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/text2/js/libs/modernizr.min.js"></script>
-	</script>
 	<style type="text/css">
 	
 	
@@ -57,28 +56,26 @@
 									<td>价格</td>
 									<td>租赁人</td>
 									<td>租赁人身份证号</td>
-									<td>租赁人联系电话</td>
 									<td>操作</td>
 									
 								</tr>
-								<c:forEach items="${zulist}" var="zulist">
+								<c:forEach items="${sessionScope.page.beanList}" var="zulist">
 								
 									<tr
 										style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-										<td>${zulist.house_id }</td>
+										<td>${zulist.roomname }</td>
 
 										<td>${zulist.address}</td>
 										
 										<td>${zulist.price}</td>
-										<td>${zulist.userlist.name}</td>
-										<td>${zulist.userlist.idcard}</td>
-										<td>${zulist.userlist.phone}</td>
+										<td>${zulist.lessee}</td>
+										<td>${zulist.lesseeCard}</td>
 										<td><a class="link-update"
-											href="/text2/hetong/seehetong.action?house_id=${zulist.house_id }">查看合同</a>
+											href="../contract/seehetong.do?contractId=${zulist.contractId }">查看合同</a>
 											&nbsp;&nbsp; 
 											
 											<a class="link-del"
-											 href="/text2/hetong/deletehetong.action?house_id=${zulist.house_id }"
+											 href="../contract/deletehetong.do?contractId=${zulist.contractId }"
 											onclick="return window.confirm('确定要终止合同吗？')">终止合同</a></td>
 										
 										
@@ -95,19 +92,18 @@
 						<tr>
 							<span id=pagelink>
 								<div style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; margin-top:10px">
-									共[<B>${p.total}</B>]条记录，共[<B>${p.pages}</B>]页
+									共[<B>${sessionScope.page.totalCount}</B>]条记录，共[<B>${sessionScope.page.totalPage}</B>]页
 									,
 
-									<c:if test="${ p.pageNum > 1 }">
-													[<A href="javascript:to_page(${p.prePage})">前一页</A>]
-												</c:if>
+									<c:if test="${ sessionScope.page.pageCode > 1 }">
+										[<A href="javascript:cancelSubscribe(${sessionScope.page.pageCode-1})">前一页</A>]
+									</c:if>
 										<input type="hidden" name="page" id="page" value=""/>
-									第<B>${p.pageNum}</B>页
+									第<B>${sessionScope.page.pageCode}</B>页
 
-									<c:if test="${ p.pageNum < p.pages }">
-													[<A href="javascript:to_page(${p.nextPage})">后一页</A>] 
-												</c:if>
-
+									<c:if test="${ sessionScope.page.pageCode< sessionScope.page.totalPage }">
+										[<A href="javascript:to_page(${sessionScope.page.pageCode+1})">后一页</A>]
+									</c:if>
 									
 								</div>
 							</span>

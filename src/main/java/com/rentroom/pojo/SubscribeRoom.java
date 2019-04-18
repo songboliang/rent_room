@@ -16,6 +16,8 @@ public class SubscribeRoom {
 
     private Room room;
 
+    private String status;
+
     public int getId() {
         return id;
     }
@@ -62,5 +64,13 @@ public class SubscribeRoom {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

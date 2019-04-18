@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentroom.dao.ContractMapper">
+
+    <resultMap id="contractResult" type="com.rentroom.pojo.Contract">
+        <id column="contract_id" property="contractId"/>
+        <result column="roomname" property="roomname"/>
+        <result column="address" property="address"/>
+        <result column="lessor" property="lessor"/>
+        <result column="lessee" property="lessee"/>
+        <result column="lessorCard" property="lessorCard"/>
+        <result column="lesseeCard" property="lesseeCard"/>
+        <result column="startDate" property="startDate"/>
+        <result column="endDate" property="endDate"/>
+        <result column="price" property="price"/>
+        <result column="payRent" property="payRent"/>
+        <result column="deposit" property="deposit"/>
+    </resultMap>
+
+    <insert id="insertContractInfo" parameterType="Contract">
+        INSERT INTO contract(contract_id,roomname,address,lessor,lessee,lessorCard,lesseeCard,startDate,endDate,price,payRent,deposit)
+        VALUES  (#{contractId,jdbcType=VARCHAR},#{roomname,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},
+        #{lessor,jdbcType=VARCHAR},#{lessee,jdbcType=VARCHAR},#{lessorCard,jdbcType=VARCHAR},
+        #{lesseeCard,jdbcType=VARCHAR},#{startDate,jdbcType=DATE},#{endDate,jdbcType=DATE},
+        #{price,jdbcType=DOUBLE},#{payRent,jdbcType=INTEGER},#{deposit,jdbcType=DOUBLE})
+    </insert>
+
+    <select id="findAllContract" resultMap="contractResult">
+        select * from contract
+    </select>
+
+    <select id="findContractById" resultMap="contractResult">
+        select * from contract where contract_id = #{contractId}
+    </select>
+
+</mapper>

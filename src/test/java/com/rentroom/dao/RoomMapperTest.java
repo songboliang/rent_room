@@ -71,4 +71,13 @@ public class RoomMapperTest {
         System.out.println(roomInfo.getAddress().getAddressName());
     }
 
+    @Test
+    public void findroom(){
+
+        Room room = roomMapper.findRoomInfoByRoomname("301-A");
+
+        System.out.println(room);
+
+    }
+
 }

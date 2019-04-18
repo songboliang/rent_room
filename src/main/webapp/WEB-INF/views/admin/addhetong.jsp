@@ -142,49 +142,53 @@
 </div>
 <div class="result-content">
 <div class="sidebar-title">
-        <form action="/text2/hetong/inserthetong.action" method="post" id="myform" name="myform" enctype="multipart/form-data" >
+        <form action="../contract/addcontract.do" method="post" id="myform" name="myform" enctype="multipart/form-data" >
                     <table class="insert-tab" width="100%">
                         <tbody>
-                                <th><i class="require-red">*</i>房屋id：</th>
+                                <th><i class="require-red">*</i>房屋门牌号：</th>
                                 <td>
-                                    <input class="common-text required" value="${hetong.house_id}" id="house_id" name="house_id" size="50" type="text" readonly>
+                                    <input class="common-text required" value="${contract.roomname}" id="roomname" name="roomname" size="50" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>地址：</th>
-                                <td><input class="common-text" name="address" value="${hetong.address }" id="address" size="50" type="text"></td>
+                                <td><input class="common-text" name="address" value="${contract.address }" id="address" size="50" type="text"></td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>出租方（甲方）：</th>
-                                <td><input class="common-text" name="chuzu" value="${hetong.chuzu }" id="chuzu" size="50" type="text" ></td>
+                                <td><input class="common-text" name="lessor" value="${contract.lessor }" id="lessor" size="50" type="text" ></td>
                             </tr>
                            <tr>
                                 <th><i class="require-red">*</i>出租方（甲方）证件号码：</th>
-                                <td><input class="common-text" name="chuzu_idcard" value="${hetong.chuzu_idcard}" id="chuzu_idcard" size="50" type="text"></td>
+                                <td><input class="common-text" name="lessorCard" value="${contract.lessorCard}" id="lessorCard" size="50" type="text"></td>
                             </tr>
                              <tr>
                                 <th><i class="require-red">*</i>承租方（乙方）：</th>
-                              <td><input class="common-text" name="zuke" value="${hetong.zuke}" id="zuke" size="50" type="text"></td>
+                              <td><input class="common-text" name="lessee" value="${contract.lessee}" id="lessee" size="50" type="text"></td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>承租方（乙方）证件号码：</th>
-                              <td><input class="common-text" name="zuke_idcard" value="${hetong.zuke_idcard}" id="zuke_idcard" size="50" type="text"></td>
+                              <td><input class="common-text" name="lesseeCard" value="${contract.lesseeCard}" id="lesseeCard" size="50" type="text"></td>
                             </tr>
                              <tr>
                                 <th><i class="require-red">*</i>起租时间：</th>
-                              <td><input class="common-text" name="fromdate" id="fromdate" value="${hetong.fromdate}" size="50"  type="text" readonly></td>
+                              <td><input class="common-text" name="startDate" id="fromdate" value="${contract.startDate}" size="50"  type="text" readonly></td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>退租时间：</th>
-                              <td><input class="common-text" name="todate" id="todate" value="${hetong.todate}" size="50"  type="text" readonly></td>
+                              <td><input class="common-text" name="endDate" id="todate" value="${contract.endDate}" size="50"  type="text" readonly></td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>每月租金：</th>
-                              <td><input class="common-text" name="price" id="price" value="${hetong.price}" size="50"  type="text" ></td>
+                              <td><input class="common-text" name="price" id="price" value="${contract.price}" size="50"  type="text" ></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>押金：</th>
+                                <td><input class="common-text" name="deposit" id="deposit" value="${contract.deposit}" size="50"  type="text" ></td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>每月交租日（数字）：</th>
-                              <td><input class="common-text" name="payday" id="payday" value="${hetong.payday}" size="50"  type="text" ></td>
+                              <td><input class="common-text" name="payRent" id="payRent" value="${contract.payRent}" size="50"  type="text" ></td>
                             </tr>
 								<tr>
                                 <th></th>

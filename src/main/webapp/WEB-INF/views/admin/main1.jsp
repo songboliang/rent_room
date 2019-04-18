@@ -83,7 +83,7 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>租赁及合同信息</a>
              <div class="p">         <ul class="sub-menu">
-                        <li><a href="../zulist/findzulist.do"><i class="icon-font">&#xe017;</i>在租列表</a></li>
+                        <li><a href="../contract/findRentlist.do"><i class="icon-font">&#xe017;</i>在租列表</a></li>
                       
                         <li><a href="/text2/checkout/getallcheckout.do"><i class="icon-font">&#xe037;</i>已退租列表</a></li>
                         

@@ -56,6 +56,12 @@
         </td>
         </tr>
         <tr>
+            <th><span class="red">*</span> 身份证号码：</th>
+            <td>
+                <input class="inp inw" type="text" id="userCard" value="${sessionScope.userInfo.userCard}" maxlength="14">
+            </td>
+        </tr>
+        <tr>
         <th><span class="red">*</span> 性 &nbsp; &nbsp;别：</th>
         <td id="wrap">
             <input type="radio" value="男" id="rbSex2" name="sex" checked="${sessionScope.userInfo.sex == '男'} >
@@ -122,6 +128,7 @@
                     "age": $("#age").val(),
                     "qq": $("#qq").val(),
                     "signature": $("#signature").val(),
+                    "userCard":$("#userCard").val(),
                 },
                 success : function(result) {
                     if(result.status == 1){
