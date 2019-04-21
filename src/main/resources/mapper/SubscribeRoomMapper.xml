@@ -10,6 +10,7 @@
         <result property="userName" column="userName"></result>
         <result property="userPhone" column="userphone"></result>
         <result property="createDate" column="createDate"></result>
+        <result column="status" property="status"></result>
         <association property="room" resultMap="roomResult2"></association>
     </resultMap>
 

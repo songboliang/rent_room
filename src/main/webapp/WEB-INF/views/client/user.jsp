@@ -22,7 +22,8 @@
           </dd>
          <dt class="vipIcon1">我的邻居大妈</dt>
           <dd>
-           <a href="<%=basePath %>room/userguanzhu.do">关注房源</a>
+           <a href="<%=basePath %>room/userguanzhu.do">看房申请</a>
+           <a href="user_shenqing.jsp">我的租赁</a>
            <a href="user_shenqing.jsp">留言</a>
           </dd>
         </dl>

@@ -105,4 +105,10 @@ public class RoomServiceImpl implements IRoomService {
     public int updateRoomInfo(Room room) {
         return roomMapper.updateRoomInfo(room);
     }
+
+    @Override
+    public void deleteRoomInfo(String roomId) {
+
+        roomMapper.deleteRoomInfo(roomId);
+    }
 }

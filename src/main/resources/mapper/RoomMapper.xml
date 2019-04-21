@@ -214,4 +214,8 @@
     from room r
     LEFT JOIN address a on a.address_id = r.address_Id
     </select>
+
+    <delete id="deleteRoomInfo" parameterType="String">
+      delete from user where room_id =#{roomId}
+    </delete>
 </mapper>

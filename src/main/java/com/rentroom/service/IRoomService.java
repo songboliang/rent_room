@@ -42,4 +42,6 @@ public interface IRoomService {
 
     int updateRoomInfo(Room room);
 
+    void  deleteRoomInfo(String roomId);
+
 }

@@ -34,7 +34,7 @@ public interface RoomMapper {
     List<Room> getRoomInfosBysellType(String sellType);
 
 
-    void  deleteRoomInfo();
+    void  deleteRoomInfo(String roomId);
 
     List<Room> selectRoomInfosByConditions(@Param(value = "addressName")String addressName,@Param(value = "priceA")double priceA ,
                                            @Param(value = "priceB") double priceB , @Param(value = "areaA") int areaA ,@Param(value = "areaB") int  areaB,

@@ -197,14 +197,12 @@ public class RoomController {
 
     //修改房屋信息
     @RequestMapping("/deletehouse.do")
-    public String deletehouse(Model model,String id , HttpServletRequest request, HttpServletResponse response,
-                              @RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
-                              @RequestParam(value = "pageSize", required = false, defaultValue = "2") int pageSize) {
-
-        PageBean page = roomService.getRoomInfos(pageCode, pageSize);
-        request.getSession().setAttribute("page", page);
-        model.addAttribute("mainPage", "ahouselist.jsp");
-        return "admin/main1";
+    public String deletehouse(Model model,String id , HttpServletRequest request, HttpServletResponse response) {
+        Room roomInfo = roomService.getRoomInfo(id);
+        if(roomInfo!=null){
+            roomService.deleteRoomInfo(id);
+        }
+        return "redirect:/room/toahouselist.do";
     }
 
 
