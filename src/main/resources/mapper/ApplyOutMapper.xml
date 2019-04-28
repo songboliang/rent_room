@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rentroom.dao.ApplyOutMapper">
+
+    <insert id="insertApplyOut" parameterType="com.rentroom.pojo.ApplyOut">
+      <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID() AS id
+      </selectKey>
+      insert into applyout(applyId,roomname,address,username,userCard,userPhone,status,applyTime)
+      values (#{id,jdbcType=INTEGER},#{roomname,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR},
+        #{userCard,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{applyTime,jdbcType=DATE})
+    </insert>
+
+    <delete id="deleteApplyOut" parameterType="String">
+        delete from applyout where applyId = #{applyId}
+    </delete>
+
+    <select id="findAllApplyOut" parameterType="com.rentroom.pojo.ApplyOut">
+        select * from applyOut where status = '申请中'
+    </select>
+
+    <update id="updateApplyOut" parameterType="String">
+        update applyout set status = #{status} where applyId = #{applyId}
+    </update>
+
+</mapper>

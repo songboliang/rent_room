@@ -106,5 +106,14 @@ public class RentConst {
     }
 
 
+    public interface SubscribeStatus{
+
+        String applying = "申请中";
+
+        String checking = "看房中";
+
+        String endChecking = "结束看房";
+    }
+
 
 }

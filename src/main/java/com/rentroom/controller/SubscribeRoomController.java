@@ -6,6 +6,7 @@ import com.rentroom.pojo.Room;
 import com.rentroom.pojo.SubscribeRoom;
 import com.rentroom.pojo.User;
 import com.rentroom.service.ISubscribeRoomService;
+import com.rentroom.utils.Bean.PageBean;
 import com.rentroom.utils.RentConst;
 import com.rentroom.utils.vo.SendCodeVO;
 import net.sf.json.JSONObject;
@@ -56,6 +57,7 @@ public class SubscribeRoomController {
             subscribeRoom.setUserName(user.getUsername());
             subscribeRoom.setUserPhone(user.getPhone());
             subscribeRoom.setCreateDate(new Date());
+            subscribeRoom.setStatus(RentConst.SubscribeStatus.applying);
             subscribeRoomService.insertSubscribeRoom(subscribeRoom);
             sendCodeVO.setStatus(RentConst.Subscribe.success);
             sendCodeVO.setMsg("房屋信息已被关注");
@@ -91,5 +93,19 @@ public class SubscribeRoomController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
+
+
+    @RequestMapping("/findapplylist.do")
+    public String toaddhoust(Model model, HttpServletRequest request, HttpServletResponse response,
+                             @RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                             @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize ) {
+
+        PageBean page = subscribeRoomService.findAllApplying(pageCode, pageSize);
+
+        request.getSession().setAttribute("page", page);
+        model.addAttribute("mainPage", "applylist.jsp");
+        return "admin/main1";
+    }
+
 
 }

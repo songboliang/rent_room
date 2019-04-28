@@ -1,5 +1,6 @@
 package com.rentroom.dao;
 
+import com.github.pagehelper.Page;
 import com.rentroom.pojo.SubscribeRoom;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,5 +15,7 @@ public interface SubscribeRoomMapper {
     void deleteSubcribeRoom(@Param(value = "userId")Long userId,@Param(value = "roomId") String roomId);
 
     List<SubscribeRoom> findSubscribeRoomList(@Param(value = "userId")long userId);
+
+    Page<SubscribeRoom> findAllApplying();
 
 }

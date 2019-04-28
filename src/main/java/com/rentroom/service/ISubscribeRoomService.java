@@ -1,6 +1,7 @@
 package com.rentroom.service;
 
 import com.rentroom.pojo.SubscribeRoom;
+import com.rentroom.utils.Bean.PageBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,4 +31,7 @@ public interface ISubscribeRoomService {
     void cancelSubscribeRoom(Long userId, String roomId);
 
     List<SubscribeRoom> findSubscribeRoomList(@Param(value = "userId")long userId);
+
+    //批量查询
+    PageBean findAllApplying(int pageCode, int pageSize);
 }

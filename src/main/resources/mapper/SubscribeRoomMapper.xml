@@ -43,8 +43,8 @@
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
-        INSERT INTO subscribeRoom(id,user_id,userName,userphone,createDate,room_Id)
-        values (#{id,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{createDate,jdbcType=DATE},#{room.roomId,jdbcType=VARCHAR})
+        INSERT INTO subscribeRoom(id,user_id,userName,userphone,createDate,status,room_Id)
+        values (#{id,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},#{userPhone,jdbcType=VARCHAR},#{createDate,jdbcType=DATE},#{status,jdbcType=VARCHAR},#{room.roomId,jdbcType=VARCHAR})
     </insert>
 
     <select id="findSubscribeRoom" resultType="subscribeRoom">
@@ -82,6 +82,14 @@
         from address a,room r
         where a.address_id = r.address_Id
         and r.room_id = #{room_id};
+    </select>
+
+
+    <select id="findAllApplying" resultMap="subscribeRoomResult1">
+        select s.id,s.user_id,s.userName,s.userphone,s.createDate,s.status,r.room_id,r.name,r.sellType,r.houseType,r.addressDesc,r.status,r.price,r.area,r.phone,r.createDate
+        from subscribeRoom s
+        LEFT JOIN room r on s.room_id = r.room_id
+        where s.status != '结束看房'
     </select>
 
 </mapper>

@@ -44,37 +44,36 @@
         <tbody>
         <tr
     style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
-        <td>房屋id</td>
+        <td>门牌号</td>
         <td>地址</td>
         <td>面积</td>
         <td>价格</td>
         <td>申请人姓名</td>
-        <td>申请人身份证号</td>
         <td>申请人电话号码</td>
+        <td>申请状态</td>
         <td>操作</td>
 
 
         </tr>
-        <c:forEach items="${applylist}" var="apply">
+        <c:forEach items="${sessionScope.page.beanList}" var="subscribeRoom">
         <tr
     style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-        <td>${apply.house_id }</td>
+        <td>${subscribeRoom.room.name }</td>
 
-        <td>${apply.address}</td>
-        <td>${apply.area}</td>
-        <td>${apply.price}</td>
-        <td>${apply.userlist.name}</td>
-        <td>${apply.userlist.idcard}</td>
-        <td>${apply.userlist.phone}</td>
+        <td>${subscribeRoom.room.address}</td>
+        <td>${subscribeRoom.room.area}</td>
+        <td>${subscribeRoom.room.price}</td>
+        <td>${subscribeRoom.userName}</td>
+        <td>${subscribeRoom.userPhone}</td>
+        <td>${subscribeRoom.status}</td>
         <td>
         <a class="link-update"
-    href="/text2/zulist/toaddhetong.action?house_id=${apply.house_id}">同意租赁</a>
+    href="/text2/zulist/toaddhetong.action?house_id=${subscribeRoom.id}">同意租赁</a>
         &nbsp;&nbsp;
-    <input type="hidden" name="id" value="${houselist.id}"/>
+    <input type="hidden" name="id" value="${subscribeRoom.id}"/>
         <a class="link-del"
-    href="/text2/refuseapply.action?house_id=${apply.house_id}"
+    href="/text2/refuseapply.action?house_id=${subscribeRoom.id}"
     onclick="return window.confirm('确定要拒绝该租客的申请吗？')">拒绝租赁</a></td>
-
 
     </td>
 
@@ -90,24 +89,23 @@
 
     <tr>
     <tr>
-    <span id=pagelink>
-        <div style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; margin-top:10px">
-        共[<B>${p.total}</B>]条记录，共[<B>${p.pages}</B>]页
-        ,
+							<span id=pagelink>
+								<div style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; margin-top:10px">
+									共[<B>${sessionScope.page.totalCount}</B>]条记录，共[<B>${sessionScope.page.totalPage}</B>]页
+									,
 
-        <c:if test="${ p.pageNum > 1 }">
-    [<A href="javascript:to_page(${p.prePage})">前一页</A>]
-        </c:if>
-        <input type="hidden" name="page" id="page" value=""/>
-        第<B>${p.pageNum}</B>页
+									<c:if test="${ sessionScope.page.pageCode > 1 }">
+                                        [<A href="javascript:cancelSubscribe(${sessionScope.page.pageCode-1})">前一页</A>]
+                                    </c:if>
+										<input type="hidden" name="page" id="page" value=""/>
+									第<B>${sessionScope.page.pageCode}</B>页
 
-            <c:if test="${ p.pageNum < p.pages }">
-            [<A href="javascript:to_page(${p.nextPage})">后一页</A>]
-        </c:if>
+									<c:if test="${ sessionScope.page.pageCode< sessionScope.page.totalPage }">
+                                        [<A href="javascript:to_page(${sessionScope.page.pageCode+1})">后一页</A>]
+                                    </c:if>
 
-
-        </div>
-        </span>
+								</div>
+							</span>
 
         </tr>
         </tbody>

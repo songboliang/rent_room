@@ -93,8 +93,8 @@
                 <li>
                     <a class="a"><i class="icon-font">&#xe018;</i>申请列表</a>
         <div class="p">            <ul class="sub-menu">
-                        <li><a href="/text2/findapplylist.do"><i class="icon-font">&#xe037;</i>看房申请</a></li>
-                       	<li><a href="/text2/applyout/findallapplyout.do"><i class="icon-font">&#xe037;</i>退租申请</a></li>
+                        <li><a href="../subscribeRoom/findapplylist.do"><i class="icon-font">&#xe037;</i>看房申请</a></li>
+                       	<li><a href="../applyout/toapplyout.do"><i class="icon-font">&#xe037;</i>退租申请</a></li>
                         
                     </ul>
                      </div>
